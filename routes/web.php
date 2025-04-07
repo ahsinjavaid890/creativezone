@@ -161,6 +161,15 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/viewmessage/{id}','AdminController@viewmessage'); 
         Route::get('/deletemessage/{id}','AdminController@deletemessage');   
     });
+
+    Route::name('website.')->prefix('website')->group(function(){
+        Route::name('settings.')->prefix('settings')->group(function(){
+            Route::get('/','SettingsController@appearance');
+            Route::get('/general','SettingsController@generalsettings');
+
+        });
+        
+    });
     Route::name('categories.')->prefix('categories')->group(function(){
         Route::get('/allcategories','AdminController@allcategories');
         Route::post('/addnewcategory','AdminController@addnewcategory');
@@ -171,7 +180,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updatesubcategory','AdminController@updatesubcategory');
         Route::get('/deletesubcategory/{id}','AdminController@deletesubcategory');   
         Route::get('/alltags','AdminController@alltags');
-        Route::post('/addevent','AdminController@addnewtag');
+        Route::post('/addnewtag','AdminController@addnewtag');
         Route::post('/updatetag','AdminController@updatetag');
         Route::get('/deletetag/{id}','AdminController@deletetag'); 
     });
@@ -190,7 +199,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('jobs.')->prefix('jobs')->group(function(){
         Route::get('/newjob','AdminController@newjob');
-        Route::post('/addnewjob','AdminController@addnewjob');
+        Route::get('/addnewjob','AdminController@addnewjob');
         Route::get('/ongoingjob','AdminController@ongoingjob');
         Route::get('/completejobs','AdminController@completejobs'); 
     });

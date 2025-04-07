@@ -294,7 +294,7 @@ class AdminController extends Controller
         $add->start_time = $request->start_time;
         $add->end_date = $request->end_date;
         $add->end_time = $request->end_time;
-        $add->time_zone = $request->time_zone;
+        // $add->time_zone = $request->time_zone;
         $add->description = $request->description;
         $add->video = Cmf::sendimagetodirectory($request->file('video')) ?? null; // Ensure it's a string
         $add->website_url = is_array($request->website_url) ? implode(',', $request->website_url) : $request->website_url;

@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-bordered+">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">Created On</th>

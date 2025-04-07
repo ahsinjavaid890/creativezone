@@ -72,7 +72,7 @@
                             @foreach($data as $r)
                             <tr>
                                 <td class="text-center">
-                                    <img src="{{ url('public/images') }}/{{ $r->image }}" class="image-thumbnail" width="50">
+                                    <img src="{{ url('images') }}/{{ $r->image }}" class="image-thumbnail" width="50">
                                 </td>
                                 <td class="text-center">
                                     {{ $r->name }}

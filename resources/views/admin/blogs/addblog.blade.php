@@ -1,6 +1,10 @@
 @extends('admin.layouts.main-layout')
 @section('title','All Blogs')
 @section('content')
+
+@php
+    use App\Helpers\Cmf;
+@endphp
  <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
@@ -70,8 +74,8 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
-                                    <a  target="_blank" href="{{ url('public/images') }}/{{ $r->image }}">
-                                        <img class="img-thumbnail" width="120" height="120" src="{{ url('public/images') }}/{{ $r->image }}">
+                                    <a  target="_blank" href="{{ url('images') }}/{{ $r->image }}">
+                                        <img class="img-thumbnail" width="120" height="120" src="{{ url('images') }}/{{ $r->image }}">
                                     </a>
                                 </td>
                                 

@@ -28,7 +28,7 @@
                         <div class="card text-center">
                             <div class="card-body">
                                 <img width="150" height="150"
-                                    src="{{ url('public/images') }}/{{ Auth::user()->profileimage }}"
+                                    src="{{ url('images') }}/{{ Auth::user()->profileimage }}"
                                     class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
 
                                 <h4 class="mb-0 mt-2">{{ Auth::user()->name }}</h4>

@@ -122,7 +122,7 @@
                                 <span class="menu-link"><span class="menu-text">Buy</span></span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/jobs/newjob') }}" class="menu-link">
+                                <a href="{{ url('admin/jobs/newjobs') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">New Job Postings</span>
                                 </a>
                             </li>
@@ -220,11 +220,6 @@
                             <span class="menu-text">Testimonials</span>
                         </a>
                     </li>
-                <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="{{ url('admin/reviews/allreviews') }}" class="menu-link menu-toggle">
-                        <span class="material-symbols-outlined">reviews</span>
-                        <span class="menu-text">Reviews</span>
-                    </a>
                 <li class="menu-section">
                     <h4 class="menu-text">Website Settings</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -239,12 +234,6 @@
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link"><span class="menu-text">Videos</span></span>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ url('admin/website/settings/commission') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i>
-                                    <span class="menu-text">Commission</span>
-                                </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ url('admin/website/settings') }}" class="menu-link menu-toggle">
