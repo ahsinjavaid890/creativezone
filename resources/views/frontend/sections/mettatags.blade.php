@@ -15,11 +15,11 @@
 	<meta property="og:locale" content="it_IT">
 	<meta name="keywords" content="{{ $mettatags->keywords }}">
 	@else
-	<title>Artist</title>
+	<title>Creative Zone</title>
 	<link rel="canonical" href="{{Request::url()}}">
 	@endif
 	@else
-	<title>Artist</title>
+	<title>Creative Zone</title>
 	<link rel="canonical" href="{{Request::url()}}">
 	@endif
 @endsection

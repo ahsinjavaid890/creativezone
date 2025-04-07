@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('tittle')
-<title>About Us | Artist</title>
+<title>About Us | Creative Zone</title>
 <link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')

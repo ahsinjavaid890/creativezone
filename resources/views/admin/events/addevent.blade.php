@@ -53,8 +53,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                        <div class="form-group">
-                                            <label>Select category</label>
-                                            <select id="category" class="form-control" name="category_id">
+                                            <label>Select category <span class="text-danger">*</span></label>
+                                            <select id="category" class="form-control" required name="category_id">
                                                 <option  value="">Choose category</option>
                                                 @foreach(DB::table('categories')->where('status' , 'Published')->get() as $c)
                                                 <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -70,14 +70,14 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Event Image</label>
-                                            <input type="file" name="image" class="form-control">
+                                            <label>Event Image <span class="text-danger">*</span></label>
+                                            <input type="file" name="image" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                        <div class="form-group">
-                                            <label>Select Location Type</label>
-                                            <select id="location_type" class="form-control" name="location_type">
+                                            <label>Select Location Type <span class="text-danger">*</span></label>
+                                            <select id="location_type" required class="form-control" name="location_type">
                                                 <option value="">Choose Location Type</option>
                                                 <option value="Venue" selected>Venue</option>
                                                 <option value="Virtual">Virtual</option>
@@ -88,13 +88,13 @@
                                     <div class="col-md-6" id="venu_location_name">
                                         <div class="form-group">
                                             <label>Location Name <span class="text-danger">*</span></label>
-                                            <input type="text"  placeholder="Location Name" class="form-control" name="location_name" id="location_name">
+                                            <input type="text" required placeholder="Location Name" class="form-control" name="location_name" id="location_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6" id="venu_location_address">
                                         <div class="form-group">
                                             <label>Location Address <span class="text-danger">*</span></label>
-                                            <input type="text"  placeholder="Location Address" class="form-control" name="location_address" id="location_address">
+                                            <input type="text" required placeholder="Location Address" class="form-control" name="location_address" id="location_address">
                                             <span class="text-warning">This information is needed for tax purposes.</span>
                                             <div id="location_map" style="height: 300px; width: 100%; margin-top: 10px;display: none;"></div>
                                         </div>
@@ -102,7 +102,7 @@
                                     <div class="col-md-12" id="virtual_address" style="display: none;">
                                         <div class="form-group">
                                             <label>Address <span class="text-danger">*</span></label>
-                                            <input type="text"  placeholder="Address" class="form-control" name="address" id="virtual_addres">
+                                            <input type="text"  placeholder="Address" class="form-control" name="address" id="virtual_addres" required>
                                             <span class="text-warning">This information is needed for tax purposes.</span>
                                             <div id="virtual_map" style="height: 300px; width: 100%; margin-top: 10px;display: none;"></div>
                                         </div>
@@ -110,50 +110,50 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Start Date<span class="text-danger">*</span></label>
-                                            <input type="date" name="start_date" class="form-control" required>
+                                            <input type="date" name="start_date" required class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Start Time<span class="text-danger">*</span></label>
-                                            <input type="time" name="start_time" class="form-control">
+                                            <input type="time" name="start_time" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>End Date<span class="text-danger">*</span></label>
-                                            <input type="date" name="end_date" class="form-control">
+                                            <input type="date" name="end_date" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>End Time<span class="text-danger">*</span></label>
-                                            <input type="time" name="end_time" class="form-control">
+                                            <input type="time" name="end_time" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                        <div class="form-group">
-                                            <label>Select Time Zone</label>
-                                            <select id="timezone" class="form-control" name="time_zone">
+                                            <label>Select Time Zone <span class="text-danger">*</span></label>
+                                            <select required id="timezone" class="form-control" name="time_zone">
                                                 <option value="">Choose Time Zone</option>
                                             </select>
                                         </div> 
                                     </div>
                                     <div class="col-md-12">
                                          <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea class="form-control summernote" name="description" rows="4"></textarea>
+                                            <label>Description <span class="text-danger">*</span></label>
+                                            <textarea required class="form-control summernote" name="description" rows="4"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Event video</label>
+                                            <label>Event video </label>
                                             <input type="file" name="video" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Website URL</label>
+                                            <label>Website URL </label>
                                             <input type="text" name="website_url" class="form-control">
                                         </div>
                                     </div>

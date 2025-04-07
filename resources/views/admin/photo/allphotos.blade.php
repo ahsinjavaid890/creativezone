@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','All FAQ')
+@section('title','All Photos')
 @section('content')
 <style type="text/css">
     .btnsuccess{
@@ -12,7 +12,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <h5 class="text-blue font-weight-bold mt-2 mb-2 mr-5">
-                   All FAQ 
+                   All Photos 
                 </h5>
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
                 <a href="{{ url('admin/dashboard') }}" class="text-blue font-weight-bold mt-2 mb-2 mr-5">
@@ -20,7 +20,7 @@
                 </a>
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
                 <a href="javascript:void(0)" class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                    All FAQ
+                    All Photos
                 </a>
             </div>
         </div>
@@ -37,8 +37,8 @@
                 <div class="card-header flex-wrap">
                     <div class="card-title">
                         <h3 class="card-label">
-                            All FAQ
-                            <div class="text-muted pt-2 font-size-sm">Manage All FAQ</div>
+                            All Photos
+                            <div class="text-muted pt-2 font-size-sm">Manage All Photos</div>
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -52,7 +52,7 @@
                                         <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
                                     </g>
                                 </svg>
-                                <!--end::Svg Icon--></span> Add New FAQ
+                                <!--end::Svg Icon--></span> Add New Photos
                         </a>
                         <!--end::Button-->
                     </div>
@@ -61,9 +61,9 @@
                     <table class="table table-bordered table-head-custom table-checkable">
                         <thead>
                             <tr>
-                                <th>FAQ Question</th>
+                                <th>Photos</th>
+                                <th>Name</th>
                                 <th>Category Name</th>
-                                <th>Order</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -71,12 +71,15 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
-                                    {{ $r->question }}
+                                    <img src="{{ url('images') }}/{{ $r->photo }}" width="50" height="50">
                                 </td>
                                 <td>
-                                    {{ DB::table('frequesntlyaskquest_categories')->where('id' , $r->category_id)->first()->name }}
+                                    {{ $r->name }}
                                 </td>
-                                <td nowrap="">
+                                <td>
+                                    {{ DB::table('photocategories')->where('id' , $r->category_id)->first()->name }}
+                                </td>
+                                <td>
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript::void(0)"  class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                       <span class="material-symbols-outlined">edit</span>
                                     </a>
@@ -99,7 +102,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/faq/deletefaq') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            <a href="{{ url('admin/photo/deletephoto') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,14 +113,14 @@
                                         <div class="modal-header">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Update FAQ</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update Photo</h5>
                                                 </div>
                                             </div>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <i aria-hidden="true" class="ki ki-close"></i>
                                             </button>
                                         </div>
-                                        <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/updatfaq') }}">
+                                        <form enctype="multipart/form-data" method="POST" action="{{ url('admin/photo/updatphoto') }}">
                                             @csrf
                                             <input type="hidden" value="{{ $r->id }}" name="id">
                                             <div class="modal-body">
@@ -137,16 +140,33 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="lable-control">Enter Question</label>
-                                                            <input value="{{ $r->question }}" name="question" required type="text" id="emailfield" class="form-control">
+                                                            <label class="lable-control">Enter Name</label>
+                                                            <input value="{{ $r->name }}" name="name" required type="text" id="emailfield" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="lable-control">Enter Answer</label>
-                                                            <textarea rows="10" class="summernote" name="answer">{{ $r->answer }}</textarea>
+                                                            <label class="lable-control">Select Photo</label>
+                                                            <input name="photo" type="file" id="emailfield" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="lable-control">Photo Order</label>
+                                                            <input value="{{ $r->order }}" name="order" type="text" id="emailfield" class="form-control">
+                                                            <div class="text-danger" id="ordererror{{ $r->id }}"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="lable-control">Enter Description</label>
+                                                            <textarea rows="10" class="summernote" name="description">{{ $r->description }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,14 +198,14 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New FAQ</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Photo</h5>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/addnewfaq') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/photo/addnewphoto') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -204,16 +224,24 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Question</label>
-                                <input name="question" required type="text" id="emailfield" class="form-control">
+                                <label class="lable-control">Enter Name</label>
+                                <input name="name" required type="text" id="emailfield" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Answer</label>
-                                <textarea rows="10" class="summernote" name="answer"></textarea>
+                                <label class="lable-control">Select Photo</label>
+                                <input name="photo" required type="file" id="emailfield" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Enter Description</label>
+                                <textarea rows="10" class="summernote" name="description"></textarea>
                             </div>
                         </div>
                     </div>

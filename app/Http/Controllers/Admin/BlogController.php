@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function blogcategories()
     {
-        $data = DB::table('blogcategories')->where('website', env('APP_NAME'))->get();
+        $data = DB::table('blogcategories')->get();
         return view('admin.blogs.categories')->with(array('data' => $data));
     }
     public function deleteblogcategory($id)
@@ -25,7 +25,7 @@ class BlogController extends Controller
     public function allblogs()
     {
         $data = DB::table('blogs')->get();
-        $categories = blogcategories::where('website', 'jiowireless')->get();
+        $categories = blogcategories::get();
         return view('admin.blogs.addblog')->with(array('data' => $data, 'categories' => $categories));
     }
     public function addnewblogcategory(Request $request)
@@ -34,7 +34,6 @@ class BlogController extends Controller
         $saveblog->name = $request->name;
         $saveblog->status = 1;
         $saveblog->url = Cmf::shorten_url($request->name);
-        $saveblog->website = env('APP_NAME');
         $saveblog->save();
         return redirect()->back()->with('message', 'Blog Category Successfully Inserted');
     }
@@ -44,14 +43,12 @@ class BlogController extends Controller
         $saveblog->name = $request->name;
         $saveblog->status = $request->status;
         $saveblog->url = Cmf::shorten_url($request->name);
-        $saveblog->website = env('APP_NAME');
         $saveblog->save();
         return redirect()->back()->with('message', 'Blog Category Updated Successfully');
     }
     public function createblog(Request $request)
     {
         $add = new blogs();
-        $add->website = env('APP_NAME');
         $add->category_id = $request->category_id;
         $add->title = $request->title;
         $add->url = Cmf::shorten_url($request->title);

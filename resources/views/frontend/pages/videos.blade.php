@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('tittle')
-<title>Videos | Jiowireless</title>
+<title>Videos | Creative Zone</title>
 <link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')

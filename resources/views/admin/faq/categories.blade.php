@@ -58,7 +58,6 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Order</th>
                                 <th>Status</th>
                                 <th>Articles</th>
                                 <th>Actions</th>
@@ -69,9 +68,6 @@
                             <tr>
                                 <td>
                                     {{ $r->name }}
-                                </td>
-                                <td>
-                                    {{ $r->order }}
                                 </td>
                                 <td>
                                     @if($r->status == 'Published')
@@ -150,14 +146,6 @@
                                                                 <option @if($r->status == 'Published') selected @endif value="Published">Published</option>
                                                                 <option @if($r->status == 'Not Published') selected @endif value="Not Published">Not Published</option>
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="lable-control">Category Order</label>
-                                                            <input value="{{ $r->order }}" name="order" type="text" id="emailfield" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>

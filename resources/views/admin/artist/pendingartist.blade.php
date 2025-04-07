@@ -56,7 +56,7 @@
                             <tr>
                                 <td>{{ $r->prefix }} {{ $r->fname }} {{ $r->mname }} {{ $r->lname }}, <br>
                                 <b>Mobile: </b>{{ $r->mobile }},<br> <b>Email: </b> {{ $r->email }}</td>
-                                <td>{{ DB::table('categories')->where('id' , $r->category_id)->first()->name }}</td>
+                                <td>@if($r->category_id){{ DB::table('categories')->where('id' , $r->category_id)->first()->name }}@endif</td>
                                 <td>{{ $r->nationality }}</td>
                                 <td>{{ $r->dob }}</td>
                                 <td>{{ $r->prefered_way_communication }}</td>

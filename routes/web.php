@@ -6,6 +6,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\PageController; 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Admin\TestmonialController;
+use App\Http\Controllers\Admin\EmailtemplateController;
+use App\Http\Controllers\Admin\FilterController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,15 +121,15 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updateblog','BlogController@updateblog');
         Route::get('/deleteblog/{id}','BlogController@deleteblog');
     });
-    Route::name('video.')->prefix('video')->group(function(){
-        Route::get('videocategories','VideoController@videocategories');
-        Route::post('/addnewvideocategory','VideoController@addnewvideocategory');
-        Route::post('/updatvideocategory','VideoController@updatvideocategory');
-        Route::get('/deletevideocategory/{id}','VideoController@deletevideocategory');
-        Route::get('/allvideos','VideoController@allvideos');
-        Route::post('/addnewvideo','VideoController@addnewvideo');
-        Route::post('/updatvideo','VideoController@updatvideo');
-        Route::get('/deletevideo/{id}','VideoController@deletevideo');
+    Route::name('photo.')->prefix('photo')->group(function(){
+        Route::get('photocategories','PhotoController@photocategories');
+        Route::post('/addnewphotocategory','PhotoController@addnewphotocategory');
+        Route::post('/updatphotocategory','PhotoController@updatphotocategory');
+        Route::get('/deletephotocategory/{id}','PhotoController@deletephotocategory');
+        Route::get('/allphotos','PhotoController@allphotos');
+        Route::post('/addnewphoto','PhotoController@addnewphoto');
+        Route::post('/updatphoto','PhotoController@updatphoto');
+        Route::get('/deletephoto/{id}','PhotoController@deletephoto');
     });
      Route::name('testimonials.')->prefix('testimonials')->group(function(){
         Route::get('alltestimonials','TestmonialController@alltestimonials');
@@ -152,6 +160,20 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/messages','AdminController@messages');
         Route::get('/viewmessage/{id}','AdminController@viewmessage'); 
         Route::get('/deletemessage/{id}','AdminController@deletemessage');   
+    });
+    Route::name('categories.')->prefix('categories')->group(function(){
+        Route::get('/allcategories','AdminController@allcategories');
+        Route::post('/addnewcategory','AdminController@addnewcategory');
+        Route::post('/updatecategory','AdminController@updatecategory');
+        Route::get('/deletecategory/{id}','AdminController@deletecategory'); 
+        Route::get('/allsubcategories','AdminController@allsubcategories');
+        Route::post('/addnewsubcategory','AdminController@addnewsubcategory');
+        Route::post('/updatesubcategory','AdminController@updatesubcategory');
+        Route::get('/deletesubcategory/{id}','AdminController@deletesubcategory');   
+        Route::get('/alltags','AdminController@alltags');
+        Route::post('/addevent','AdminController@addnewtag');
+        Route::post('/updatetag','AdminController@updatetag');
+        Route::get('/deletetag/{id}','AdminController@deletetag'); 
     });
     Route::name('artist.')->prefix('artist')->group(function(){
         Route::get('/pendingartist','AdminController@pendingartist');

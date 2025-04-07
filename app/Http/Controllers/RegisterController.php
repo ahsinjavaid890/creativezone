@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Helpers\Cmf;
@@ -59,13 +58,11 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
-        // Validation
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -73,10 +70,8 @@ class RegisterController extends Controller
             'status' => 'active',
             'password' => Hash::make($request->password),
         ]);
-
         auth()->login($user);
         Mail::to($user->email)->send(new WelcomeEmail($user));
-        // Redirect after registration
         return redirect()->route('home')->with('success', 'Registration successful');
     }
     public function artistsignup(Request $request)
@@ -88,17 +83,15 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:artists,email',
             'password' => 'required|min:6|confirmed',
         ]);
-
         $artist = new artist();
         $artist->prefix = $request->prefix;
         $artist->fname = $request->fname;
         $artist->lname = $request->lname;
         $artist->email = $request->email;
-        $artist->password = Hash::make($request->password); // Password Hashing
+        $artist->password = Hash::make($request->password);
         $artist->status = 0;
         $artist->save();
         Auth::guard('artist')->login($artist); 
-        // ✅ Redirect to artist-process
         return redirect()->route('artistprocess')->with('success', 'Registration successful! Redirecting...');
     }
     public function artistprocess()
@@ -110,7 +103,6 @@ class RegisterController extends Controller
     }
     public function completesignup(Request $request)
     {
-           // Validate Input Fields
         $this->validate($request,[
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
@@ -126,15 +118,10 @@ class RegisterController extends Controller
             'term_and_condition_acceptance' => 'required',
             'registration_payment' => 'nullable|numeric',
         ]);
-
-        // Get the logged-in artist
         $update = Artist::find($request->id);
-
         if (!$update) {
             return redirect()->back()->with('error', 'Artist not found!');
         }
-
-        // Update fields only if they are provided in the request
         $update->fname = $request->fname ?? $update->fname;
         $update->lname = $request->lname ?? $update->lname;
         $update->email = $request->email ?? $update->email;
@@ -148,19 +135,14 @@ class RegisterController extends Controller
         $update->prefered_way_communication = $request->prefered_way_communication ?? $update->prefered_way_communication;
         $update->term_and_condition_acceptance = $request->term_and_condition_acceptance ?? $update->term_and_condition_acceptance;
         $update->registration_payment = $request->registration_payment ?? $update->registration_payment;
-
-        // Handle multiple image uploads
         if ($request->hasFile('image')) {
             $images = [];
             foreach ($request->file('image') as $file) {
                 $images[] = Cmf::sendimagetodirectory($file);
             }
-            $update->image = json_encode($images); // Storing images as JSON array
+            $update->image = json_encode($images);
         }
-
         $update->save();
-
         return redirect()->to(url('userdashboard'))->with('success', 'Signup completed successfully!');
-
     }
 }
