@@ -17,6 +17,7 @@ use App\Models\frequesntlyaskquest_categorie;
 use App\Models\frequesntlyaskquestions;
 use App\Models\videocategory;
 use App\Models\video;
+use App\Models\events;
 use App\Models\testimonial;
 use App\Models\artist;
 use App\Models\contactus;
@@ -51,7 +52,7 @@ class SiteController extends Controller
     }
     public function blogs()
     {
-        $data = blogs::get();
+        $data = blogs::where('status' , 1)->get();
         return view('frontend.pages.blogs')->with(array('data' => $data));
     }
     public function faq()
@@ -265,7 +266,8 @@ class SiteController extends Controller
     }
     public function allevents()
     {
-        return view('frontend.events.index');
+        $events = events::where('status' , 'Published')->paginate(10);
+        return view('frontend.events.index')->with(array('events' => $events));
     }
     public function eventsdetails($id)
     {

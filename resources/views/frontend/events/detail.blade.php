@@ -17,18 +17,18 @@
 			<div class="col-lg-8">
 				<div class="blog-deatils-content heading2">
 					<div class="img1">
-								<img src="{{  url('public/newfront/assets/img/all-images/blog/blog-img7.png') }}" alt="">
+								<img src="{{  url('newfront/assets/img/all-images/blog/blog-img7.png') }}" alt="">
 					</div>
 					<div class="space32"></div>
 					<ul>
 						<li>
-							<a href="#"><img src="{{  url('public/newfront/assets/img/icons/calender1.svg')}}" alt="">26 Jan 2025 <span> | </span></a>
+							<a href="#"><img src="{{  url('newfront/assets/img/icons/calender1.svg')}}" alt="">26 Jan 2025 <span> | </span></a>
 						</li>
 						<li>
-							<a href="#"><img src="{{  url('public/newfront/assets/img/icons/user1.svg')}}" alt="">Gisselle <span> | </span></a>
+							<a href="#"><img src="{{  url('newfront/assets/img/icons/user1.svg')}}" alt="">Gisselle <span> | </span></a>
 						</li>
 						<li>
-							<a href="#"><img src="{{  url('public/newfront/assets/img/icons/comments1.svg')}}" alt="">2 Comments</a>
+							<a href="#"><img src="{{  url('newfront/assets/img/icons/comments1.svg')}}" alt="">2 Comments</a>
 						</li>
 					</ul>
 					<div class="space18"></div>
@@ -207,12 +207,12 @@
                         <div class="blog1-auhtor-boxarea">
                             <div class="content-area all-events p-0">
                                 <div class="img1 image-anime">
-                                    <img src="{{ url('public/newfront/assets/img/all-images/blog/' . $event['image']) }}" alt="" />
+                                    <img src="{{ url('newfront/assets/img/all-images/blog/' . $event['image']) }}" alt="" />
                                 </div>
                                 <div class="p-3">
                                     <ul>
                                         <li>
-                                            <a href="#"><img src="{{ url('public/newfront/assets/img/icons/calender1.svg') }}" alt="" />{{ $event['date'] }}</a>
+                                            <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />{{ $event['date'] }}</a>
                                         </li>
                                     </ul>
                                     <div class="space20"></div>

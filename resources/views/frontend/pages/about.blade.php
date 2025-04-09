@@ -20,19 +20,19 @@
          <div class="col-lg-6">
             <div class="about-imges">
                <div class="img1 reveal image-anime" style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-                  <img src="{{ url('public/newfront/assets/img/all-images/about/about-img1.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                  <img src="{{ url('newfront/assets/img/all-images/about/about-img1.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
                </div>
                <div class="row">
                   <div class="col-lg-6 col-md-6">
                      <div class="space30"></div>
                      <div class="img1 reveal image-anime" style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-                        <img src="{{ url('public/newfront/assets/img/all-images/about/about-img2.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                        <img src="{{ url('newfront/assets/img/all-images/about/about-img2.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
                      </div>
                   </div>
                   <div class="col-lg-6 col-md-6">
                      <div class="space30"></div>
                      <div class="img1 reveal image-anime" style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-                        <img src="{{ url('public/newfront/assets/img/all-images/about/about-img3.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                        <img src="{{ url('newfront/assets/img/all-images/about/about-img3.png') }}" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
                      </div>
                   </div>
                </div>
@@ -166,82 +166,82 @@
                   <div class="owl-stage" style="transform: translate3d(-3315px, 0px, 0px); transition: 2s; width: 5305px;">
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img5.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img5.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img6.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img6.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img7.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img7.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img8.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img8.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img1.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img1.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img2.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img2.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img3.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img3.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img4.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img4.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img5.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img5.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img6.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img6.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item active" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img7.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img7.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item active" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img8.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img8.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned active" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img1.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img1.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned active" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img2.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img2.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img3.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img3.png') }}" alt="">
                         </div>
                      </div>
                      <div class="owl-item cloned" style="width: 301.502px; margin-right: 30px;">
                         <div class="brand-box">
-                           <img src="{{ url('public/newfront/assets/img/elements/brand-img4.png') }}" alt="">
+                           <img src="{{ url('newfront/assets/img/elements/brand-img4.png') }}" alt="">
                         </div>
                      </div>
                   </div>
@@ -268,7 +268,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">
@@ -283,7 +283,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">
@@ -298,7 +298,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">
@@ -313,7 +313,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">
@@ -328,7 +328,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">
@@ -343,7 +343,7 @@
          <div class="col-lg-4 col-md-6">
             <div class="choose-widget-boxarea">
                <div class="icons">
-                  <img src="{{ url('public/newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
+                  <img src="{{ url('newfront/assets/img/icons/choose-icons1.svg') }}" alt="">
                </div>
                <div class="space24"></div>
                <div class="content-area">

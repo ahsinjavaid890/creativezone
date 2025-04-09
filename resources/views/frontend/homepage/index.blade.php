@@ -1,6 +1,9 @@
 @extends('frontend.layouts.main')
 @include('frontend.sections.mettatags')
 @section('content')
+@php
+    use App\Helpers\Cmf;
+@endphp
 <!--===== HERO AREA STARTS =======-->
     <div class="hero1-section-area">
         <div class="container">
@@ -463,70 +466,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6" >
-                    <div class="blog1-auhtor-boxarea">
-                        <div class="img1 image-anime">
-                            <img src="{{ url('newfront/assets/img/all-images/blog/blog-img1.png') }}" alt="" />
-                        </div>
+                @foreach(DB::table('blogs')->where('status' , 1)->get() as $b)
+                    <div class="col-lg-4 col-md-6" >
+                        <div class="blog1-auhtor-boxarea">
+                            <div class="img1 image-anime">
+                                <img src="{{ url('images') }}/{{ $b->image }}" alt="" />
+                            </div>
 
-                        <div class="content-area">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />15 March 2025</a>
-                                </li>
-                            </ul>
-                            <div class="space20"></div>
-                            <a href="{{ url('blog') }}/1">The Future of Green Energy: Innovations to Watch</a>
-                            <div class="space24"></div>
-                            <div class="btn-area1">
-                                <a href="{{ url('blog') }}/1" class="vl-btn2">Read More</a>
+                            <div class="content-area">
+                                <ul>
+                                    <li>
+                                        <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />{{ Cmf::date_format($b->created_at) }}</a>
+                                    </li>
+                                </ul>
+                                <div class="space20"></div>
+                                <a href="{{ url('blog') }}/{{ $b->id }}">{{ $b->title }}</a>
+                                <div class="space24"></div>
+                                <div class="btn-area1">
+                                    <a href="{{ url('blog') }}/{{ $b->id }}" class="vl-btn2">Read More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog1-auhtor-boxarea">
-                        <div class="img1 image-anime">
-                            <img src="{{ url('newfront/assets/img/all-images/blog/blog-img2.png') }}" alt="" />
-                        </div>
-
-                        <div class="content-area">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />20 March 2025</a>
-                                </li>
-                            </ul>
-                            <div class="space20"></div>
-                            <a href="{{ url('blog') }}/1">Tech Giants Investing in AI: What’s Next?</a>
-                            <div class="space24"></div>
-                            <div class="btn-area1">
-                                <a href="{{ url('blog') }}/1" class="vl-btn2">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog1-auhtor-boxarea">
-                        <div class="img1 image-anime">
-                            <img src="{{ url('newfront/assets/img/all-images/blog/blog-img3.png') }}" alt="" />
-                        </div>
-
-                        <div class="content-area">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />25 March 2025</a>
-                                </li>
-                            </ul>
-                            <div class="space20"></div>
-                            <a href="{{ url('blog') }}/1">How Remote Work is Reshaping Global...</a>
-                            <div class="space24"></div>
-                            <div class="btn-area1">
-                                <a href="{{ url('blog') }}/1" class="vl-btn2">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

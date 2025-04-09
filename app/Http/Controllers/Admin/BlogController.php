@@ -54,6 +54,7 @@ class BlogController extends Controller
         $add->url = Cmf::shorten_url($request->title);
         $add->content = $request->content;
         $add->image = Cmf::sendimagetodirectory($request->image);
+        $add->status = 1;
         $add->save();
         return redirect()->back()->with('message', 'Blog Added Successfully');
     }

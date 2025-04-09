@@ -33,13 +33,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="img1 image-anime">
-                    <img src="{{ url('public/newfront/assets/img/all-images/contact/contact-img4.png') }} " alt="" />
+                    <img src="{{ url('newfront/assets/img/all-images/contact/contact-img4.png') }} " alt="" />
                 </div>
             </div>
 
             <div class="col-lg-6" >
                 <div class="contact4-boxarea">
-                    <h3 class="text-anime-style-3">Login</h3>
+                    <h3 class="text-anime-style-3">Contact Us</h3>
                     <div class="space8"></div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
@@ -86,7 +86,7 @@
 <!--===== CONTACT AREA STARTS =======-->
 <div class="contact2-bg-section">
     <div class="img1">
-        <img src="{{ url('public/newfront/assets/img/all-images/contact/contact-img1.png') }} " alt="" class="contact-img1" />
+        <img src="{{ url('newfront/assets/img/all-images/contact/contact-img1.png') }} " alt="" class="contact-img1" />
     </div>
     <div class="container">
         <div class="row">
@@ -96,7 +96,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="contact-boxarea" >
                             <div class="icons">
-                                <img src="{{ url('public/newfront/assets/img/icons/mail1.svg') }}" alt="" />
+                                <img src="{{ url('newfront/assets/img/icons/mail1.svg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h5>Our Email</h5>
@@ -107,7 +107,7 @@
                         <div class="space18"></div>
                         <div class="contact-boxarea" >
                             <div class="icons">
-                                <img src="{{ url('public/newfront/assets/img/icons/location1.svg') }}" alt="" />
+                                <img src="{{ url('newfront/assets/img/icons/location1.svg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h5>our location</h5>
@@ -121,7 +121,7 @@
                         <div class="space20 d-md-none d-block"></div>
                         <div class="contact-boxarea" >
                             <div class="icons">
-                                <img src="{{ url('public/newfront/assets/img/icons/phn1.svg') }}" alt="" />
+                                <img src="{{ url('newfront/assets/img/icons/phn1.svg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h5>Call/Message</h5>
@@ -132,7 +132,7 @@
                         <div class="space18"></div>
                         <div class="contact-boxarea">
                             <div class="icons">
-                                <img src="{{ url('public/newfront/assets/img/icons/instagram.svg') }}" alt="" />
+                                <img src="{{ url('newfront/assets/img/icons/instagram.svg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h5>Instagram</h5>

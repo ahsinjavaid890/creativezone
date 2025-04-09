@@ -5820,6 +5820,7 @@ Location:
     z-index: 1;
     overflow: hidden;
     border-radius: 8px;
+    height: 232px;
 }
 
 .blog1-section-area .blog1-auhtor-boxarea .all-events .img1 img {
@@ -9552,7 +9553,7 @@ html {
 
 .homepage1-body .header-area.homepage1 .header-elements .site-logo img {
     width: 150px;
-    height: 45px;
+    height: 60px;
     -o-object-fit: contain;
     object-fit: contain;
 }

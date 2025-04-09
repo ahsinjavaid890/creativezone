@@ -273,9 +273,6 @@ class AdminController extends Controller
     }
     public function addevent(Request $request)
     {
-        // dd($request->all());
-
-       
         // Save the event
         $add = new events();
         $add->name = $request->name;

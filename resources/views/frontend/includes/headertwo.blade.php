@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="header-elements">
                         <div class="site-logo">
-                            <a href="{{ url('')}}"><img src="{{ url('newfront/assets/img/logo/logo1.png') }}" alt="" /></a>
+                            <a href="{{ url('')}}"><img src="{{ url('newfront/assets/img/logo/logo1.jpg') }}" alt="" /></a>
                         </div>
                         <div class="main-menu">
                             <ul>
@@ -13,10 +13,6 @@
                                     <a href="{{ url('') }}">Home</a>
                                 </li>
                                 <li><a href="{{ url('aboutus') }}">About Us</a></li>
-                                <li>
-                                    <a href="#">Speakers</a>
-                                </li>
-
                                 <li>
                                     <a href="{{ url('all-events') }}">Our Event</a>
                                 </li>

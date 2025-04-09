@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-logo-area">
-                        <img src="{{ url('newfront/assets/img/logo/logo1.png')  }}" alt="" />
+                        <img src="{{ url('newfront/assets/img/logo/logo2.jpg')  }}" alt="" />
                         <div class="space16"></div>
                         <p>We are committed to creating a platform where business leaders, innovators, and professionals can come together to exchange ideas</p>
                         <div class="space24"></div>
