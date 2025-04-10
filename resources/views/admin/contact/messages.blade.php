@@ -1,6 +1,9 @@
 @extends('admin.layouts.main-layout')
 @section('title','All Messages')
 @section('content')
+@php
+    use App\Helpers\Cmf;
+@endphp
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -52,7 +55,7 @@
                             @foreach($data as $r)
                                 <tr>
                                     <td class="text-center">{{ Cmf::create_time_ago($r->created_at) }}</td>
-                                    <td class="text-center">{{ $r->fname }} {{ $r->lname}}</td>
+                                    <td class="text-center">{{ $r->name}}</td>
                                     
                                     <td class="text-center">
                                         {{ $r->email }}
@@ -62,7 +65,7 @@
                                     </td>
                                    <td class="text-center">
                                     <a href="{{ url('admin/contact/viewmessage') }}/{{ $r->id }}" class="btn btn-icon btn-light btn-hover-primary btn-sm" >
-                                      <span class="material-symbols-outlined">edit</span>
+                                      <span class="material-symbols-outlined">visibility</span>
                                    </a>
                                    <a href="javascript:void(0);" onclick='confirmDelete("{{ url('admin/contact/deletemessage') }}/{{ $r->id }}")' class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                       <span class="material-symbols-outlined">delete</span>
