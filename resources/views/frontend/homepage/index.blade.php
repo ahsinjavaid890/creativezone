@@ -65,74 +65,27 @@
                     </div>
                 </div>
             </div>
-            @php
-            $events = [
-                        [
-                            'id' => 1,
-                            'image' => 'blog-img1.png',
-                            'date' => '25 March 2025',
-                            'title' => 'Innovate 2025 A Full-Day Journey...',
-                            'description' => 'The Innovate 2025 conference is meticulously designed to ...',
-                        ],
-                        [
-                            'id' => 2,
-                            'image' => 'blog-img2.png',
-                            'date' => '10 April 2025',
-                            'title' => 'Tech Future 2025',
-                            'description' => 'A conference dedicated to exploring the future of technology, AI ...',
-                        ],
-                        [
-                            'id' => 3,
-                            'image' => 'blog-img3.png',
-                            'date' => '15 May 2025',
-                            'title' => 'Business Summit 2025',
-                            'description' => 'Bringing together top business leaders to discuss trends and strategies ...',
-                        ],
-                        [
-                            'id' => 4,
-                            'image' => 'blog-img1.png',
-                            'date' => '25 March 2025',
-                            'title' => 'Innovate 2025 A Full-Day Journey...',
-                            'description' => 'The Innovate 2025 conference is meticulously designed to ...',
-                        ],
-                        [
-                            'id' => 5,
-                            'image' => 'blog-img2.png',
-                            'date' => '10 April 2025',
-                            'title' => 'Tech Future 2025',
-                            'description' => 'A conference dedicated to exploring the future of technology, AI ...',
-                        ],
-                        [
-                            'id' => 6,
-                            'image' => 'blog-img3.png',
-                            'date' => '15 May 2025',
-                            'title' => 'Business Summit 2025',
-                            'description' => 'Bringing together top business leaders to discuss trends and strategies ...',
-                        ],
-                    ];
-
-            @endphp
             <div class="row">
                 @foreach ($events as $event)
                     <div class="col-lg-4 col-md-6 mt-5">
                         <div class="blog1-auhtor-boxarea">
                             <div class="content-area all-events p-0">
                                 <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/blog/' . $event['image']) }}" alt="" />
+                                    <img src="{{ url('images/' . $event->image) }}" alt="" />
                                 </div>
                                 <div class="p-3">
                                     <ul>
                                         <li>
-                                            <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />{{ $event['date'] }}</a>
+                                            <a href="#"><img src="{{ url('newfront/assets/img/icons/calender1.svg') }}" alt="" />{{ Cmf::date_format($event->created_at) }}</a>
                                         </li>
                                     </ul>
                                     <div class="space20"></div>
-                                    <a href="{{ url('events/' . $event['id']) }}">{{ $event['title'] }}</a>
+                                    <a href="{{ url('events/' . $event->id )}}">{{ $event->name }}</a>
                                     <div class="space16"></div>
-                                    <p>{{ $event['description'] }}</p>
+                                    <p>{!! $event->description !!}</p>
                                     <div class="space24"></div>
                                     <div class="btn-area1">
-                                        <a href="javascript:void(0)" class="vl-btn1 event-btn" data-id="{{ $event['id'] }}">Register</a>
+                                        <a href="javascript:void(0)" class="vl-btn1 event-btn" data-id="{{ $event->id }}">Become Attendee</a>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +94,7 @@
                 @endforeach
                 <div class="col-lg-12 text-center">
                     <div class="btn-area1">
-                        <a href="{{ url('all-events') }}" class="vl-btn1 event-btn" data-id="{{ $event['id'] }}">all Events</a>
+                        <a href="{{ url('all-events') }}" class="vl-btn1 event-btn">all Events</a>
                     </div>
                 </div>
             </div>

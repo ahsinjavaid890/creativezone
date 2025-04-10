@@ -88,13 +88,13 @@
                                     <div class="col-md-6" id="venu_location_name">
                                         <div class="form-group">
                                             <label>Location Name <span class="text-danger">*</span></label>
-                                            <input type="text" required placeholder="Location Name" class="form-control" name="location_name" id="location_name">
+                                            <input type="text"  placeholder="Location Name" class="form-control" name="location_name" id="location_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6" id="venu_location_address">
                                         <div class="form-group">
                                             <label>Location Address <span class="text-danger">*</span></label>
-                                            <input type="text" required placeholder="Location Address" class="form-control" name="location_address" id="location_address">
+                                            <input type="text"  placeholder="Location Address" class="form-control" name="location_address" id="location_address">
                                             <span class="text-warning">This information is needed for tax purposes.</span>
                                             <div id="location_map" style="height: 300px; width: 100%; margin-top: 10px;display: none;"></div>
                                         </div>
@@ -102,7 +102,7 @@
                                     <div class="col-md-12" id="virtual_address" style="display: none;">
                                         <div class="form-group">
                                             <label>Address <span class="text-danger">*</span></label>
-                                            <input type="text"  placeholder="Address" class="form-control" name="address" id="virtual_addres" required>
+                                            <input type="text"  placeholder="Address" class="form-control" name="address" id="virtual_addres" >
                                             <span class="text-warning">This information is needed for tax purposes.</span>
                                             <div id="virtual_map" style="height: 300px; width: 100%; margin-top: 10px;display: none;"></div>
                                         </div>
@@ -218,8 +218,8 @@
 @section('script')
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYUTCpyRfNY8Und6oYaKi5Vkqip7OIWEU&libraries=geometry,places&v=weekly"></script>
 <!-- Include Moment.js and Moment-Timezone -->
-<script src="{{ url('public/newfront/assets/js/vendor/moment.min.js') }}"></script>
-<script src="{{ url('public/newfront/assets/js/vendor/moment-timezone-with-data.min.js') }}"></script>
+<script src="{{ url('newfront/assets/js/vendor/moment.min.js') }}"></script>
+<script src="{{ url('newfront/assets/js/vendor/moment-timezone-with-data.min.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -319,19 +319,17 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var select = document.getElementById("timezone");
-        var timezones = moment.tz.names(); // Get all timezones
+        var timezones = moment.tz.names(); 
 
         timezones.forEach(function (tz) {
             var option = document.createElement("option");
-            var offset = moment.tz(tz).utcOffset(); // Get offset in minutes
-            var offsetHours = (offset / 60).toFixed(2); // Convert to hours
+            var offset = moment.tz(tz).utcOffset(); 
+            var offsetHours = (offset / 60).toFixed(2); 
 
             option.value = tz;
             option.textContent = `(GMT${offsetHours >= 0 ? '+' : ''}${offsetHours}) ${tz}`;
             select.appendChild(option);
         });
-
-        // Auto-select user's timezone
         select.value = moment.tz.guess();
     });
 </script>

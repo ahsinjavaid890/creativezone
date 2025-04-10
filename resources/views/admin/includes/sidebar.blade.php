@@ -4,9 +4,9 @@
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
-        <a style=" background-color: white; margin-top: 15px; border-radius: 11px; " href="{{url('admin/dashboard')}}">
+        <a style=" background-color: white; margin-top: 20px; border-radius: 11px; " href="{{url('admin/dashboard')}}">
             <img style=" padding: 5px; width: 100%; " alt="Logo"
-                src="{{ url('newfront/assets/img/logo/logo1.png') }}" />
+                src="{{ url('newfront/assets/img/logo/logo1.jpg') }}" />
         </a>
         <!--end::Logo-->
     </div>

@@ -61,9 +61,9 @@
                             <tr>
                                 <td class="text-center">
                                     @if($r->image)
-                                    <img src="{{ url('public/images') }}/{{ $r->image }}" width="50" alt="Image">
+                                    <img src="{{ url('images') }}/{{ $r->image }}" width="50" alt="Image">
                                     @else
-                                    <img src="{{ url('public/images/noimage.jpeg') }}" width="50" alt="Image">
+                                    <img src="{{ url('images/noimage.jpeg') }}" width="50" alt="Image">
                                     @endif
                                 </td>
                                 <td>{{ $r->name }}</td>
@@ -72,8 +72,8 @@
                                 <td>{{ $r->time_zone }}</td>
                                 <td>
                                     <a href="javascript::void(0)" onclick='confirmstatus("{{ url('admin/events/changestatus') }}/{{ $r->id }}")'>
-                                         @if($r->status == 'Approved')
-                                         <span class="label label-lg label-success label-inline">Approved</span>
+                                         @if($r->status == 'Published')
+                                         <span class="label label-lg label-success label-inline">Published</span>
                                          @endif
                                          @if($r->status == 'Pending')
                                          <span class="label label-lg label-danger label-inline">Pending</span>

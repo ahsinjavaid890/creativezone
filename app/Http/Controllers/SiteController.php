@@ -20,7 +20,7 @@ use App\Models\video;
 use App\Models\events;
 use App\Models\testimonial;
 use App\Models\artist;
-use App\Models\contactus;
+use App\Models\contactuses;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
 use Illuminate\Support\Facades\Hash;
@@ -42,8 +42,8 @@ class SiteController extends Controller
 {
     public function index()
     {
-        
-        return view('frontend.homepage.index');
+        $events = events::where('status' , 'Published')->take(6)->get();
+        return view('frontend.homepage.index')->with(array('events' => $events));
     }
     public function videos()
     {
@@ -112,8 +112,8 @@ class SiteController extends Controller
     }
     public function blogdetail($id)
     {
-        
-        return view('frontend.pages.blogdetails');
+        $data = blogs::where('id' , $id)->first();
+        return view('frontend.pages.blogdetails')->with(array('data' => $data));
     }
     public function blogbycategory($id)
     {
@@ -198,24 +198,19 @@ class SiteController extends Controller
     public function contacts(Request $request)
     {
         $this->validate($request, [
-            'fname' => 'required',
-            'lname' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
         ]);
-        $insert = new contactus();
-        $insert->fname = $request->fname;
-        $insert->lname = $request->lname;
+        $insert = new contactuses();
+        $insert->name = $request->name;
         $insert->email = $request->email;
         $insert->phone = $request->phone;
+        $insert->subject = $request->subject;
+        $insert->message = $request->message;
         $insert->save();
-        $notificationUrl = 'admin/contact/messages';
-        notifications::create([
-            'icon' => 'business_messages',
-            'notification_name' => 'Contact Message query',
-            'url' => $notificationUrl,
-            'is_read' => false,
-        ]);
         return view('frontend.pages.contact_shortly');
     }
     public function privacypolicy()
@@ -271,7 +266,8 @@ class SiteController extends Controller
     }
     public function eventsdetails($id)
     {
-        return view('frontend.events.detail');
+        $data = events::where('id' , $id)->first();
+        return view('frontend.events.detail')->with(array('data' => $data));;
     }
     public function userdashboard()
     {

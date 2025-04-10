@@ -32,9 +32,9 @@
                                         </li>
                                     </ul>
                                     <div class="space20"></div>
-                                    <a href="{{ url('events/' . $event['id']) }}">{{ $event->name }}</a>
+                                    <a href="{{ url('events/' . $event->id )}}">{{ $event->name }}</a>
                                     <div class="space16"></div>
-                                    <p>{{ \Illuminate\Support\Str::limit($event->description, 50) }}</p>
+                                    <p>{!! $event->description !!}</p>
                                     <div class="space24"></div>
                                     <div class="btn-area1">
                                         <a href="javascript:void(0)" class="vl-btn1 event-btn" data-id="{{ $event->id }}">Become Attendee</a>

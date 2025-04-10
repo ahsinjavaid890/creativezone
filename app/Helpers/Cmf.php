@@ -129,8 +129,8 @@ class Cmf
     public static function date_format($data)
     {
         if ($data instanceof \Illuminate\Support\Carbon) {
-            return $data->format('d M Y H:i');
+            return $data->format('d M Y');
         }
-        return \Illuminate\Support\Carbon::parse($data)->format('d M Y H:i');
+        return \Illuminate\Support\Carbon::parse($data)->format('d M Y');
     }
 }
