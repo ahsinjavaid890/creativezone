@@ -15,6 +15,7 @@ use App\Models\event_social;
 use App\Models\event_tags;
 use App\Models\blogcategories;
 use App\Models\notifications;
+use App\Models\upcoming_events;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -306,5 +307,43 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Event successfully added.');
 
+    }
+    public function upcomingevents()
+    {
+        $upcoming = upcoming_events::pluck('event_id')->toArray();
+        $data = events::whereIn('id', $upcoming)->get();
+        return view('admin.events.upcoming', compact('data', 'upcoming'));
+    }
+
+    public function addupcomingevents(Request $request)
+    {
+        // Get all selected event IDs from the form
+        $selectedEventIds = $request->input('events_id', []); // Will return [] if nothing selected
+
+        // Get all current event IDs from the DB
+        $existingEventIds = upcoming_events::pluck('event_id')->toArray();
+
+        // Find event IDs to delete (unselected)
+        $toDelete = array_diff($existingEventIds, $selectedEventIds);
+
+        // Find event IDs to insert (newly selected)
+        $toInsert = array_diff($selectedEventIds, $existingEventIds);
+
+        // Delete unselected ones
+        if (!empty($toDelete)) {
+            upcoming_events::whereIn('event_id', $toDelete)->delete();
+        }
+
+        // Insert new ones
+        foreach ($toInsert as $eventId) {
+            if ($eventId) {
+                $event = new upcoming_events();
+                $event->event_id = $eventId;
+                $event->status = 1;
+                $event->save();
+            }
+        }
+
+        return redirect()->back()->with('message', 'Upcoming events updated successfully.');
     }
 }

@@ -107,6 +107,11 @@
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Add Events</span>
                                 </a>
                             </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/events/upcomingevents') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Upcoming Events</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

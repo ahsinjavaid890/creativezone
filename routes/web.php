@@ -198,7 +198,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::name('events.')->prefix('events')->group(function(){
         Route::get('/allevents','AdminController@allevents');
         Route::get('/createnewevent','AdminController@createnewevent');
-        Route::post('/addevent','AdminController@addevent');
+        Route::post('/adaddupcomingeventsdevent','AdminController@addevent');
+        Route::get('/upcomingevents','AdminController@upcomingevents');
+        Route::post('/addupcomingevents','AdminController@addupcomingevents');
     });
     Route::name('jobs.')->prefix('jobs')->group(function(){
         Route::get('/newjob','AdminController@newjob');
