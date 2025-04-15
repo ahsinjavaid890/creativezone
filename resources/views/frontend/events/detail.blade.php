@@ -73,41 +73,50 @@
 			<div class="col-lg-4">
 				<div class="blog-auhtor-details">
 				<div class="contact-inner-section">
+					<div class="row">
+		                <div class="col-md-12">
+		                    @include('alerts.index')
+		                </div>
+		            </div>
 			    	<div class="row">
 			    		<div class="col-lg-12">
 			    			<div class="contact4-boxarea">
 			                    <h3 class="text-anime-style-3 text-center">Apply For Event</h3>
 			                    <div class="space8"></div>
-			                    <div class="row">
-			                        <div class="col-lg-6 col-md-6">
-			                            <div class="input-area">
-			                                <input type="text" placeholder="Name" />
-			                            </div>
-			                        </div>
-			                        <div class="col-lg-6 col-md-6">
-			                            <div class="input-area">
-			                                <input type="text" placeholder="Phone" />
-			                            </div>
-			                        </div>
+			                    <form method="POST" action="{{ url('applyevent') }}">
+			                    	@csrf
+			                    	<input type="hidden" name="event_id" value="{{ $data->id }}">
+			                    	<div class="row">
+				                        <div class="col-lg-6 col-md-6">
+				                            <div class="input-area">
+				                                <input type="text" placeholder="Name" name="name" required />
+				                            </div>
+				                        </div>
+				                        <div class="col-lg-6 col-md-6">
+				                            <div class="input-area">
+				                                <input type="text" placeholder="Phone" name="phone" required/>
+				                            </div>
+				                        </div>
 
-			                        <div class="col-lg-12 col-md-6">
-			                            <div class="input-area">
-			                                <input type="email" placeholder="Email" />
-			                            </div>
-			                        </div>
-			                        <div class="col-lg-12">
-			                            <div class="input-area">
-			                                <textarea placeholder="Message"></textarea>
-			                            </div>
-			                        </div>
+				                        <div class="col-lg-12 col-md-6">
+				                            <div class="input-area">
+				                                <input type="email" placeholder="Email" name="email" required/>
+				                            </div>
+				                        </div>
+				                        <div class="col-lg-12">
+				                            <div class="input-area">
+				                                <textarea placeholder="Message" name="message" required></textarea>
+				                            </div>
+				                        </div>
 
-			                        <div class="col-lg-12">
-			                            <div class="space24"></div>
-			                            <div class="input-area text-end">
-			                                <button type="submit" class="vl-btn1">Apply Now</button>
-			                            </div>
-			                        </div>
-			                    </div>
+				                        <div class="col-lg-12">
+				                            <div class="space24"></div>
+				                            <div class="input-area text-end">
+				                                <button type="submit" class="vl-btn1">Apply Now</button>
+				                            </div>
+				                        </div>
+				                    </div>
+			                    </form>
 			                </div>
 			    		</div>
 			    	</div>

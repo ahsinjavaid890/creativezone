@@ -46,6 +46,9 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::get('all-events', [SiteController::class, 'allevents']);
 Route::get('events/{id}', [SiteController::class, 'eventsdetails']);
+Route::get('getevents', [SiteController::class, 'getevents']);
+Route::get('all-upcomingevents', [SiteController::class, 'upcomingevents']);
+Route::POST('applyevent', [SiteController::class, 'applyevent']);
 
 
 Route::get('/', [SiteController::class, 'index']);
@@ -201,6 +204,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/adaddupcomingeventsdevent','AdminController@addevent');
         Route::get('/upcomingevents','AdminController@upcomingevents');
         Route::post('/addupcomingevents','AdminController@addupcomingevents');
+        Route::get('/eventapplications','AdminController@eventapplications');
+        Route::get('/changeapplicationstatus/{id}','AdminController@changeapplicationstatus'); 
+        Route::get('/rejecteventapplication/{id}','AdminController@rejecteventapplication');
     });
     Route::name('jobs.')->prefix('jobs')->group(function(){
         Route::get('/newjob','AdminController@newjob');

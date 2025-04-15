@@ -18,9 +18,12 @@ use App\Models\frequesntlyaskquestions;
 use App\Models\videocategory;
 use App\Models\video;
 use App\Models\events;
+use App\Models\upcoming_events;
+use App\Models\event_applications;
 use App\Models\testimonial;
 use App\Models\artist;
 use App\Models\contactuses;
+use App\Mail\GeneralEmail;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
 use Illuminate\Support\Facades\Hash;
@@ -264,6 +267,12 @@ class SiteController extends Controller
         $events = events::where('status' , 'Published')->paginate(10);
         return view('frontend.events.index')->with(array('events' => $events));
     }
+    public function upcomingevents()
+    {
+        $eventIds = upcoming_events::where('status', 1)->pluck('event_id');
+        $events = events::where('status', 'Published')->whereIn('id', $eventIds)->paginate(10);
+        return view('frontend.events.upcoming')->with(array('events' => $events));
+    }
     public function eventsdetails($id)
     {
         $data = events::where('id' , $id)->first();
@@ -280,5 +289,32 @@ class SiteController extends Controller
     public function investmentrequest()
     {
         return view('frontend.events.invesment-request');
+    }
+    public function getevents(Request $request)
+    {
+        $date = $request->input('date');
+        $events = events::whereDate('start_date', $date)->get();
+        return view('frontend.events.partials.eventcards', compact('events'));
+    }
+    public function applyevent(Request $request)
+    {
+        $add = new event_applications();
+        $add->event_id = $request->event_id;
+        $add->name = $request->name;
+        $add->phone = $request->phone;
+        $add->email = $request->email;
+        $add->message = $request->message;
+        $add->status = 2;
+        $add->save();
+
+        // Email send after saving
+        $subject = 'New Event Application Submitted';
+        $body = "New application received:\n\n"
+            . "Name: {$add->name}\n"
+            . "Phone: {$add->phone}\n"
+            . "Email: {$add->email}\n"
+            . "Message: {$add->message}";
+        Mail::to('info@creativezone.com')->send(new GeneralEmail($subject, $body));
+        return redirect()->back()->with('message', 'Your application is under review');
     }
 }

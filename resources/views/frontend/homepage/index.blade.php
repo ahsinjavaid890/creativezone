@@ -94,172 +94,59 @@
                 @endforeach
                 <div class="col-lg-12 text-center">
                     <div class="btn-area1">
-                        <a href="{{ url('all-events') }}" class="vl-btn1 event-btn">all Events</a>
+                        <a href="{{ url('all-upcomingevents') }}" class="vl-btn1 event-btn">all UpComing Events</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<!--===== EVENT AREA ENDS =======-->
+    <!--===== EVENT AREA ENDS =======-->
 
-<div class="memory1-section-area sp1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 m-auto">
-                        <div class="memory-header text-center heading2 space-margin60">
-                            <h5 data-aos="fade-left" data-aos-duration="800" class="aos-init aos-animate">Event Photos</h5>
-                            <div class="space16"></div>
-                            <h2 class="text-anime-style-3" style="perspective: 400px;"><div class="split-line" style="display: block; text-align: center; position: relative;"><div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Recent Photos 2024</div></div></div></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="memory-slider-area owl-carousel owl-loaded owl-drag">
-                            
-
-                            
-
-                            
-
-                            
-                        <div class="owl-stage-outer"><div class="owl-stage" style="transition: 2s; width: 4421px; transform: translate3d(-2210px, 0px, 0px);"><div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img2.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img3.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img1.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img1.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img2.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item active" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img3.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item active center" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img1.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item cloned active" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img1.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img2.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;"><div class="memory-boxarea">
-                                <div class="img1 image-anime">
-                                    <img src="{{ url('newfront/assets/img/all-images/memory/memory-img3.png')}}" alt="">
-                                </div>
-                                <div class="content-area">
-                                    <div class="arrow">
-                                        <a href="memories.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                    <div class="space18"></div>
-                                    <p>Event 2024</p>
-                                    <div class="space12"></div>
-                                    <a href="memories.html">Event Conferences</a>
-                                </div>
-                            </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa-solid fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa-solid fa-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+    <div class="memory1-section-area sp1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <div class="memory-header text-center heading2 space-margin60">
+                        <h5 data-aos="fade-left" data-aos-duration="800" class="aos-init aos-animate">Event Photos</h5>
+                        <div class="space16"></div>
+                        <h2 class="text-anime-style-3" style="perspective: 400px;"><div class="split-line" style="display: block; text-align: center; position: relative;"><div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Recent Photos 2024</div></div></div></h2>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="memory-slider-area owl-carousel owl-loaded owl-drag">
+                      <div class="owl-stage-outer">
+                         <div class="owl-stage" style="transition: 2s; width: 4421px; transform: translate3d(-2210px, 0px, 0px);">
+                            @foreach(DB::table('photos')->where('status' , 1)->get() as $p)
+                            <div class="owl-item cloned" style="width: 412.003px; margin-right: 30px;">
+                               <div class="memory-boxarea">
+                                  <div class="img1 image-anime">
+                                     <img src="{{ url('images/' . $p->photo) }}" alt="">
+                                  </div>
+                                  <div class="content-area">
+                                     <div class="arrow">
+                                        <a href="javascript:void(0)"><i class="fa-solid fa-arrow-right"></i></a>
+                                     </div>
+                                     <div class="space18"></div>
+                                     <p>{{ DB::table('photocategories')->where('id' , $p->category_id)->first()->name }}</p>
+                                     <div class="space12"></div>
+                                     <a href="javascript:void(0)">{{ $p->name }}</a>
+                                  </div>
+                               </div>
+                            </div>
+                            @endforeach
+                         </div>
+                      </div>
+                      <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa-solid fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa-solid fa-angle-right"></i></button></div>
+                      <div class="owl-dots disabled"></div>
+                   </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-<!--===== EVENT AREA STARTS =======-->
+    <!--===== EVENT AREA STARTS =======-->
     <div class="event1-section-area sp1">
         <div class="container">
             <div class="row">
@@ -308,102 +195,14 @@
                 <div class="col-lg-12">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                            <div class="tabs-widget-boxarea" data-aos="fade-up" data-aos-duration="800">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4">
-                                        <div class="img1">
-                                            <img src="{{ url('newfront/assets/img/all-images/event/event-img1.png') }}" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="content-area">
-                                            <ul>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/clock1.svg') }}" alt="" /> 10:00 AM -12:00 PM <span> | </span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/location1.svg') }}" alt="" /> 26/C Asana, New York </a>
-                                                </li>
-                                            </ul>
-                                            <div class="space20"></div>
-                                            <a href="event-single.html" class="head">Innovate 2025 Your Pathway to Business Transformation</a>
-                                            <div class="space16"></div>
-                                            <p>The Innovate 2025 conference is meticulously designed to , immersive experience that drives actionable insights & fosters collaboration from keynote presentations.</p>
-                                            <div class="space32"></div>
-                                            <div class="btn-area1">
-                                                <a href="pricing-plan.html" class="vl-btn1">Register</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space30"></div>
-                            <div class="tabs-widget-boxarea" data-aos="fade-up" data-aos-duration="1000">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4">
-                                        <div class="img1">
-                                            <img src="{{ url('newfront/assets/img/all-images/event/event-img2.png') }}" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="content-area">
-                                            <ul>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/clock1.svg') }}" alt="" /> 10:00 AM -12:00 PM <span> | </span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/location1.svg') }}" alt="" /> 26/C Asana, New York </a>
-                                                </li>
-                                            </ul>
-                                            <div class="space20"></div>
-                                            <a href="event-single.html" class="head">Innovate 2025 A Full-Day Journey the Future of Business</a>
-                                            <div class="space16"></div>
-                                            <p>The Innovate 2025 conference is meticulously designed to , immersive experience that drives actionable insights & fosters collaboration from keynote presentations.</p>
-                                            <div class="space32"></div>
-                                            <div class="btn-area1">
-                                                <a href="pricing-plan.html" class="vl-btn1">Register</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space30"></div>
-                            <div class="tabs-widget-boxarea" data-aos="fade-up" data-aos-duration="1200">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4">
-                                        <div class="img1">
-                                            <img src="{{ url('newfront/assets/img/all-images/event/event-img3.png') }}" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="content-area">
-                                            <ul>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/clock1.svg') }}" alt="" /> 10:00 AM -12:00 PM <span> | </span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><img src="{{ url('newfront/assets/img/icons/location1.svg') }}" alt="" /> 26/C Asana, New York </a>
-                                                </li>
-                                            </ul>
-                                            <div class="space20"></div>
-                                            <a href="event-single.html" class="head">Innovate 2025 Charting the Course for Business Success</a>
-                                            <div class="space16"></div>
-                                            <p>The Innovate 2025 conference is meticulously designed to , immersive experience that drives actionable insights & fosters collaboration from keynote presentations.</p>
-                                            <div class="space32"></div>
-                                            <div class="btn-area1">
-                                                <a href="pricing-plan.html" class="vl-btn1">Register</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<!--===== EVENT AREA ENDS =======-->
+    <!--===== EVENT AREA ENDS =======-->
 
  
 <!--===== BLOG AREA STARTS =======-->
@@ -607,14 +406,21 @@ function toggleColors(id) {
 
         let row = document.createElement("tr");
 
+        // Fill empty cells for days before the 1st of the month
         for (let i = 0; i < firstDay.getDay(); i++) {
-            row.appendChild(document.createElement("td"));
+            const emptyDate = new Date(date.getFullYear(), date.getMonth(), 1 - (firstDay.getDay() - i));
+            const cell = document.createElement("td");
+            cell.classList.add("calendar-day");
+            cell.setAttribute("data-date", emptyDate.toISOString().split("T")[0]);
+            row.appendChild(cell);
         }
 
         for (let day = 1; day <= lastDay.getDate(); day++) {
             const cell = document.createElement("td");
-            cell.textContent = day;
+            cell.classList.add("calendar-day");
             const cellDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            cell.setAttribute("data-date", cellDate);
+            cell.textContent = day;
 
             if (cellDate === today.toISOString().split("T")[0]) {
                 cell.classList.add("today");
@@ -649,6 +455,7 @@ function toggleColors(id) {
         updateEventList();
     }
 
+
     function updateEventList() {
         eventList.innerHTML = "<h4></h4>";
         for (let key in events) {
@@ -679,6 +486,25 @@ function toggleColors(id) {
 
     renderCalendar();
 });
+
+</script>
+<script type="text/javascript">
+    $(document).on("click", ".calendar-day", function () {
+        let selectedDate = $(this).data("date");
+        $("#eventDate").val(selectedDate); // if needed
+
+        $.ajax({
+            url: "{{ url('getevents') }}", // your backend route
+            method: "GET",
+            data: { date: selectedDate },
+            success: function (response) {
+                $("#pills-home").html(response); // replace the content inside the event section
+            },
+            error: function (xhr) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
 
 </script>
 @endsection

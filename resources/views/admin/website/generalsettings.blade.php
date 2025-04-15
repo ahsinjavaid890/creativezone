@@ -35,7 +35,7 @@
                                     <h4 class="fw-600 mb-0">General</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ url('admin/website/settingsupdate') }}" enctype='multipart/form-data' method="POST">
+                                    <form action="{{ url('admin/website/settings/settingsupdate') }}" enctype='multipart/form-data' method="POST">
                                        @csrf
                                        <div class="row">
                                            <div class="col-md-12">
@@ -82,7 +82,7 @@
                                     <h4 class="fw-600 mb-0">Logos and Fav Icons</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ url('admin/website/updatelogos') }}" enctype='multipart/form-data' method="POST">
+                                    <form action="{{ url('admin/website/settings/updatelogos') }}" enctype='multipart/form-data' method="POST">
                                        @csrf
                                        <div class="row">
                                             <div class="col-md-12">
@@ -93,7 +93,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="height: 100px;width: 100px;">
-                                                    <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $settings->header_logo }}">
+                                                    <img class="img-thumbnail" src="{{ url('images') }}/{{ $settings->header_logo }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -104,7 +104,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="height: 100px;width: 100px;">
-                                                    <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $settings->footer_logo }}">
+                                                    <img class="img-thumbnail" src="{{ url('images') }}/{{ $settings->footer_logo }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -117,7 +117,7 @@
                                                     <small class="text-muted">Website favicon. 32x32 .png</small>
                                                 </div>
                                                 <div style="height: 100px;width: 100px;">
-                                                    <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $settings->favicon }}">
+                                                    <img class="img-thumbnail" src="{{ url('images') }}/{{ $settings->favicon }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@
                                     <h4 class="fw-600 mb-0">Social Links</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ url('admin/website/updatelinks') }}" enctype='multipart/form-data' method="POST">
+                                    <form action="{{ url('admin/website/settings/updatelinks') }}" enctype='multipart/form-data' method="POST">
                                        @csrf
                                        <div class="row">
                                            <div class="col-md-12">

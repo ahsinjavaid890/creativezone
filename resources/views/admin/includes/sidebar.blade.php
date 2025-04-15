@@ -166,12 +166,18 @@
                         </ul>
                     </div>
                 </li>
-                    <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-                        <a href="{{ url('admin/testimonials/alltestimonials') }}" class="menu-link menu-toggle">
-                            <span class="material-symbols-outlined">rate_review</span>
-                            <span class="menu-text">Testimonials</span>
-                        </a>
-                    </li>
+                <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="{{ url('admin/testimonials/alltestimonials') }}" class="menu-link menu-toggle">
+                        <span class="material-symbols-outlined">rate_review</span>
+                        <span class="menu-text">Testimonials</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="{{ url('admin/events/eventapplications') }}" class="menu-link menu-toggle">
+                        <span class="material-symbols-outlined">mark_chat_unread</span>
+                        <span class="menu-text">Event Application</span>
+                    </a>
+                </li>
                 <li class="menu-section">
                     <h4 class="menu-text">Website Settings</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>

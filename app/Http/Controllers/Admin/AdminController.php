@@ -16,6 +16,7 @@ use App\Models\event_tags;
 use App\Models\blogcategories;
 use App\Models\notifications;
 use App\Models\upcoming_events;
+use App\Models\event_applications;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -345,5 +346,29 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->with('message', 'Upcoming events updated successfully.');
+    }
+    public function eventapplications()
+    {
+        $data = event_applications::get();
+        return view('admin.events.eventapplications')->with(array('data' => $data));
+    }
+    public function changeapplicationstatus($id)
+    {
+        $updateincategory  = event_applications::findOrFail($id);
+        if($updateincategory->status == '2')
+        {
+            $updateincategory->status = '1';
+        }else{
+            $updateincategory->status = '2';
+        }
+        $updateincategory->save();
+        return redirect()->back()->with('message', 'Status Updated Successfully'); 
+    }
+    public function rejecteventapplication($id)
+    {
+        $updateincategory  = event_applications::findOrFail($id);
+        $updateincategory->status = 3;
+        $updateincategory->save();
+        return redirect()->back()->with('message', 'Event Application Rejected Successfully'); 
     }
 }
