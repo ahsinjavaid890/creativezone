@@ -14,7 +14,7 @@
                 <div class="content-area">
                     <ul>
                         <li>
-                            <a href="#"><img src="{{ url('newfront/assets/img/icons/clock1.svg') }}" alt="" /> {{ $event->start_date }} - {{ $event->start_time  }} <span> | </span></a>
+                            <a href="{{ url('events/' . $event->id )}}"><img src="{{ url('newfront/assets/img/icons/clock1.svg') }}" alt="" /> {{ $event->start_date }} - {{ $event->start_time  }} <span> | </span></a>
                         </li>
                         <li>
                             @if($event->location_type == 'Virtual')
@@ -27,12 +27,12 @@
                         </li>
                     </ul>
                     <div class="space20"></div>
-                    <a href="#" class="head">{{ $event->name }}</a>
+                    <a href="{{ url('events/' . $event->id )}}" class="head">{{ $event->name }}</a>
                     <div class="space16"></div>
                     <p>{!! $event->description !!}</p>
                     <div class="space32"></div>
                     <div class="btn-area1">
-                        <a data-id="{{ $event->id }}" href="javascript:void(0)" class="vl-btn1 event-btn" >Become Attendee</a>
+                        <a data-id="{{ $event->id }}" href="{{ url('events/' . $event->id )}}" class="vl-btn1 event-btn" >Become Attendee</a>
                     </div>
                 </div>
             </div>

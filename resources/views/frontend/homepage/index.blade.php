@@ -85,7 +85,7 @@
                                     <p>{!! $event->description !!}</p>
                                     <div class="space24"></div>
                                     <div class="btn-area1">
-                                        <a href="javascript:void(0)" class="vl-btn1 event-btn" data-id="{{ $event->id }}">Become Attendee</a>
+                                        <a href="{{ url('events/' . $event->id )}}" class="vl-btn1 event-btn" data-id="{{ $event->id }}">Become Attendee</a>
                                     </div>
                                 </div>
                             </div>

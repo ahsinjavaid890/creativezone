@@ -38,7 +38,14 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style="padding-bottom: 20px;" align="center" valign="top" class="description">
-                                                                    <p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:left;padding:0;margin:0">{!! nl2br(e($messageBody)) !!}</p>
+                                                                    <p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:left;padding:0;margin:0">
+                                                                        Dear {{ $user->fname }},<br><br>
+                                                                        Thank you for applying as an artist on CreativeZone! We are excited to have you on board.<br><br>
+                                                                        Our team will review your application and get back to you shortly. In the meantime, feel free to explore our platform and connect with fellow artists.<br><br>
+                                                                        If you have any questions, feel free to reach out to us at <a href="mailto:support@creativezone.com">support@creativezone.com</a>.<br><br>
+                                                                        Best regards,<br>
+                                                                        CreativeZone Team
+                                                                    </p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -88,8 +95,8 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="padding: 0px 10px 10px;" align="center" valign="top" class="footerEmailInfo">
-                                                                    <p class="text" style="color:#bbb;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:20px;text-transform:none;text-align:center;padding:0;margin:0">If you have any quetions please contact us <a href="#" style="color:#bbb;text-decoration:underline" target="_blank">support@creativezone.com.</a>
-                                                                        <br> <a href="#" style="color:#bbb;text-decoration:underline" target="_blank">Unsubscribe</a> from our mailing lists</p>
+                                                                    <p class="text" style="color:#bbb;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:20px;text-transform:none;text-align:center;padding:0;margin:0">If you have any questions please contact us <a href="#" style="color:#bbb;text-decoration:underline" target="_blank">support@creativezone.com.</a>
+                                                                        <br> <a href="#" style="color:#bbb;text-decoration:underline" target="_blank">Unsubscribe</a> from our mailing list</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>

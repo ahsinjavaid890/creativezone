@@ -7,7 +7,7 @@ use App\Helpers\Cmf;
 use App\Models\companies;
 use App\Models\artist;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\WelcomeEmail;
+use App\Mail\WelcomeMail;
 use DB;
 use Mail;
 use Auth;
@@ -73,7 +73,7 @@ class RegisterController extends Controller
         auth()->login($user);
         Mail::to($user->email)->send(new WelcomeEmail($user));
         return redirect()->route('home')->with('success', 'Registration successful');
-    }
+    }  
     public function artistsignup(Request $request)
     {
         $this->validate($request, [
@@ -91,6 +91,8 @@ class RegisterController extends Controller
         $artist->password = Hash::make($request->password);
         $artist->status = 0;
         $artist->save();
+         // Send welcome email to artist
+        Mail::to($artist->email)->send(new WelcomeMail($artist));
         Auth::guard('artist')->login($artist); 
         return redirect()->route('artistprocess')->with('success', 'Registration successful! Redirecting...');
     }

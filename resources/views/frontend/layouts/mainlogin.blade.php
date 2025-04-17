@@ -44,10 +44,7 @@
         </div>
     </div>
     <!--===== PAGE PROGRESS END=======-->
-
-		@include('frontend.includes.headertwo')
 			@yield('content')
-		@include('frontend.includes.footertwo')
         <script src="{{ url('newfront/assets/js/vendor/jquery-3.7.1.min.js') }}"></script>
         <script src="{{ url('newfront/assets/js/vendor/bootstrap.min.js') }}"></script>
         <script src="{{ url('newfront/assets/js/vendor/fontawesome.js') }}"></script>

@@ -314,7 +314,10 @@ class SiteController extends Controller
             . "Phone: {$add->phone}\n"
             . "Email: {$add->email}\n"
             . "Message: {$add->message}";
-        Mail::to('info@creativezone.com')->send(new GeneralEmail($subject, $body));
+        Mail::to($add->email)->send(new GeneralEmail(
+            'Thank you for applying',
+            "Dear {$add->name},\n\nThank you for applying for our event. We will get back to you soon.\n\n- CreativeZone Team"
+        ));
         return redirect()->back()->with('message', 'Your application is under review');
     }
 }

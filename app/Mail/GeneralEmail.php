@@ -22,13 +22,13 @@ class GeneralEmail extends Mailable
         $this->subjectLine = $subjectLine;
         $this->messageBody = $messageBody;
     }
-
     public function build()
     {
         return $this->subject($this->subjectLine)
-                    ->view('emails.general')  // Create this view
+                    ->view('emails.generalmail')
                     ->with([
-                        'messageBody' => $this->messageBody,
+                        'subjectLine' => $this->subjectLine,
+                        'messageBody' => $this->messageBody, // <-- Add this
                     ]);
     }
 }
