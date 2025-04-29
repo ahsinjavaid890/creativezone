@@ -20,6 +20,12 @@
                                     <a href="{{ url('blogs') }}">Our Blogs</a>
                                 </li>
                                 <li>
+                                    <a href="{{ url('gallery') }}">Gallery</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('membership') }}">MemberShip Plan</a>
+                                </li>
+                                <li>
                                     <a href="{{ url('contact') }}">Contact Us</a>
                                 </li>
                             </ul>
@@ -28,11 +34,11 @@
                             <ul>
                                 @if(Auth::guard('artist')->check())
                                 <li class="p-2">
-                                    <a href="{{ url('dashboard') }}">Dashboard</i></a>
+                                    <a href="{{ url('user/userdashboard') }}">Dashboard</i></a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</i></a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ url('user/artistlogout') }}" method="POST" style="display: none;">
                                       @csrf
                                    </form>
                                 </li>

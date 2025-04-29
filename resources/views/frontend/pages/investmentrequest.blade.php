@@ -14,41 +14,47 @@
 <div class="contact-inner-section sp1">
     <div class="container">
     	<div class="row">
+            <div class="col-md-12">
+                @include('alerts.index')
+            </div>
     		<div class="col-lg-9">
-    			<div class="contact4-boxarea">
-                    <h3 class="text-anime-style-3 text-center">Request For Investment</h3>
-                    <div class="space8"></div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="input-area">
-                                <input type="text" placeholder="Name" />
+    			<form method="post" action="{{ url('invest-request') }}">
+                    @csrf
+                    <div class="contact4-boxarea">
+                        <h3 class="text-anime-style-3 text-center">Request For Investment</h3>
+                        <div class="space8"></div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="input-area">
+                                    <input type="text" placeholder="Name" name="name" required />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="input-area">
-                                <input type="text" placeholder="Phone" />
+                            <div class="col-lg-6 col-md-6">
+                                <div class="input-area">
+                                    <input type="text" placeholder="Phone" name="phone" required />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-12 col-md-6">
-                            <div class="input-area">
-                                <input type="email" placeholder="Email" />
+                            <div class="col-lg-12 col-md-6">
+                                <div class="input-area">
+                                    <input type="email" placeholder="Email" name="email" required />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="input-area">
-                                <textarea placeholder="Message"></textarea>
+                            <div class="col-lg-12">
+                                <div class="input-area">
+                                    <textarea placeholder="Message" name="message" required></textarea>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-12">
-                            <div class="space24"></div>
-                            <div class="input-area text-end">
-                                <button type="submit" class="vl-btn1">Submit Now</button>
+                            <div class="col-lg-12">
+                                <div class="space24"></div>
+                                <div class="input-area text-end">
+                                    <button type="submit" class="vl-btn1">Submit Now</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>         
+                </form>
     		</div>
     		<div class="col-lg-3">
     			<div class="contact4-boxarea">

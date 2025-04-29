@@ -17,11 +17,17 @@ use App\Models\blogcategories;
 use App\Models\notifications;
 use App\Models\upcoming_events;
 use App\Models\event_applications;
+use App\Models\invest_request;
+use App\Models\plans;
+use App\Mail\GeneralEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use  Illuminate\Support\Facades\Redirect;
+use Stripe\Stripe;
+use Stripe\Product;
+use Stripe\Price;
 
 class AdminController extends Controller
 {
@@ -369,6 +375,152 @@ class AdminController extends Controller
         $updateincategory  = event_applications::findOrFail($id);
         $updateincategory->status = 3;
         $updateincategory->save();
+        $subject = 'Event Application Rejected';
+        $body = "New application received:\n\n"
+            . "Name: {$updateincategory->name}\n"
+            . "Phone: {$updateincategory->phone}\n"
+            . "Email: {$updateincategory->email}\n"
+            . "Message: {$updateincategory->message}";
+        Mail::to($updateincategory->email)->send(new GeneralEmail(
+            'Thank you for Event Application',
+            "Dear {$updateincategory->name},\n\nThank you for your Send Event Application for our event.\n\nAfter careful consideration, we regret to inform you that your application has not been approved at this time. We appreciate your interest and hope to collaborate with you in the future.\n\n- CreativeZone Team"
+        ));
         return redirect()->back()->with('message', 'Event Application Rejected Successfully'); 
     }
+    public function Investmentrequests()
+    {
+        $data = invest_request::get();
+        return view('admin.events.investmentrequests')->with(array('data' => $data));
+    }
+    public function changerequeststatus($id)
+    {
+        $updateincategory  = invest_request::findOrFail($id);
+        if($updateincategory->status == '2')
+        {
+            $updateincategory->status = '1';
+        }else{
+            $updateincategory->status = '2';
+        }
+        $updateincategory->save();
+        return redirect()->back()->with('message', 'Status Updated Successfully'); 
+    }
+    public function rejectinvestrequest($id)
+    {
+        $updateincategory  = invest_request::findOrFail($id);
+        $updateincategory->status = 3;
+        $updateincategory->save();
+         // Email send after saving
+        $subject = 'Investment Request Rejected';
+        $body = "New application received:\n\n"
+            . "Name: {$updateincategory->name}\n"
+            . "Phone: {$updateincategory->phone}\n"
+            . "Email: {$updateincategory->email}\n"
+            . "Message: {$updateincategory->message}";
+        Mail::to($updateincategory->email)->send(new GeneralEmail(
+            'Thank you for Send Investment Request',
+            "Dear {$updateincategory->name},\n\nThank you for your investment request for our event.\n\nAfter careful consideration, we regret to inform you that your request has not been approved at this time. We appreciate your interest and hope to collaborate with you in the future.\n\n- CreativeZone Team"
+        ));
+        return redirect()->back()->with('message', 'Event Investment Request Rejected Successfully'); 
+    }
+    public function allplans()
+    {
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlans = $stripe->plans->all(['limit' => 10]);
+        $stripePriceIds = collect($stripePlans->data)->pluck('id')->toArray();
+        $localPlans = plans::whereIn('stripe_price_id', $stripePriceIds)->get();
+        $data = $localPlans->map(function ($localPlan) use ($stripePlans) {
+            $stripePlan = collect($stripePlans->data)->firstWhere('id', $localPlan->stripe_price_id);
+            return [
+                'local' => $localPlan,
+                'stripe' => $stripePlan,
+            ];
+        });
+        return view('admin.plans.allplans', compact('data'));
+    }
+    public function createnewplan()
+    {
+        return view('admin.plans.addplan');
+    }
+    public function addplan(Request $request)
+    {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $plan = $stripe->plans->create([
+          'amount' => $request->price * 100,
+          'currency' => 'usd',
+          'interval' => $request->billing_cycle,
+          'product' => $product->id,
+        ]);
+        $localPlan = new plans();
+        $localPlan->name = $request->name;
+        $localPlan->slug = $request->slug;
+        $localPlan->price = $request->price;
+        $localPlan->billing_cycle = $request->billing_cycle;
+        $localPlan->features = implode(',', $request->features);
+        $localPlan->trial_days = $request->trial_days;
+        $localPlan->currency = $plan->currency;
+        $localPlan->max_event_listings = $request->max_event_listings;
+        $localPlan->priority_support = $request->priority_support;
+        $localPlan->description = $request->description;
+        $localPlan->stripe_product_id = $product->id;
+        $localPlan->stripe_price_id = $plan->id;
+        $localPlan->is_active = 1;
+        $localPlan->save();
+        return redirect()->back()->with('message', 'Plan added successfully and synced with Stripe!');
+    }
+    public function editplan($id)
+    {
+        $plan = plans::findOrFail($id);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlan = null;
+        try {
+            $stripePlan = $stripe->plans->retrieve($plan->stripe_price_id, []);
+        } catch (\Exception $e) {
+            $stripePlan = null;
+        }
+        return view('admin.plans.editplan', compact('plan', 'stripePlan'));
+    }
+    public function updateplan(Request $request)
+    {
+        $plan = plans::findOrFail($request->id);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $newStripePrice = $stripe->plans->create([
+          'amount' => $request->price * 100,
+          'currency' => 'usd',
+          'interval' => $request->billing_cycle,
+          'product' => $plan->stripe_product_id,
+        ]);
+        $plan->name = $request->name;
+        $plan->slug = $request->slug;
+        $plan->price = $request->price;
+        $plan->billing_cycle = $request->billing_cycle;
+        $plan->features = implode(',', $request->features);
+        $plan->trial_days = $request->trial_days;
+        $plan->currency = $plan->currency;
+        $plan->max_event_listings = $request->max_event_listings;
+        $plan->priority_support = $request->priority_support;
+        $plan->description = $request->description;
+        $plan->stripe_price_id = $newStripePrice->id;
+        $plan->save();
+        return redirect()->back()->with('message', 'Stripe product updated and new price created successfully.');
+    }
+    public function deleteplan($id)
+    {
+        $plan = plans::findOrFail($id);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $prices = $stripe->plans->all([
+            'product' => $plan->stripe_product_id,
+        ]);
+        foreach ($prices->data as $price) {
+            $stripe->plans->delete($price->id); 
+        }
+        $stripe->products->delete($plan->stripe_product_id);
+        $plan->delete();
+        return redirect()->back()->with('message', 'Plan deleted successfully from both Stripe and local database.');
+    }
+
 }

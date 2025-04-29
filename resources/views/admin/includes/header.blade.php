@@ -104,7 +104,7 @@
                                 <!--begin::Scroll-->
                                 <div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200">
                                     <!--begin::Item-->
-                                    
+                                    {{ auth()->user()->notifications }}
                                     <!--end::Item-->
                                 </div>
                                 <!--end::Scroll-->

@@ -146,6 +146,44 @@
         </div>
     </div>
 
+    <div class="pricing-lan-section-area sp1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 m-auto">
+                    <div class="heading2 text-center space-margin60">
+                        <h5>plan pricing</h5>
+                        <div class="space18"></div>
+                        <h2>Event Pass &amp; Tickets</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($plan as $r)
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-boxarea">
+                        <h5>{{ $r['local']->name ?? 'N/A' }}</h5>
+                        <div class="space20"></div>
+                        <h2> 
+                            @if(strtoupper($r['stripe']->currency ?? '') == 'USD')$@endif{{ number_format(($r['stripe']->amount ?? 0) / 100) }}
+                        <span>/One Person</span></h2>
+                        <div class="space8"></div>
+                        <div class="plan_description">
+                            {!! $r['local']->description !!}
+                        </div>
+                        <div class="space28"></div>
+                        <div class="btn-area1">
+                            @if(Auth::guard('artist')->check())
+                            <a href="{{ url('user/buy-plan') }}/{{ $r['local']->slug }}" class="vl-btn1">buy a plan</a>
+                            @else
+                            <a href="{{ url('register') }}" class="vl-btn1">Register Now</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
     <!--===== EVENT AREA STARTS =======-->
     <div class="event1-section-area sp1">
         <div class="container">

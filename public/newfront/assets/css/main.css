@@ -2065,7 +2065,7 @@ Location:
     text-transform: capitalize;
     padding: 8px 10px;
     display: inline-block;
-    background-image: url(../img/bg/others-bg3.png);
+    background-image: linear-gradient(11deg, #5cc99f 0%, #5ea98d 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9553,9 +9553,10 @@ html {
 
 .homepage1-body .header-area.homepage1 .header-elements .site-logo img {
     width: 150px;
-    height: 60px;
+    height: 85px;
     -o-object-fit: contain;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li a.nav-link.active {
@@ -9754,7 +9755,7 @@ html {
 
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li a {
     font-family: var(--ztc-family-font1) !important;
-    font-size: var(--ztc-font-size-font-s16);
+    font-size: var(--ztc-font-size-font-s18);
     font-weight: var(--ztc-weight-medium);
     color: var(--ztc-text-text-1);
     display: block;
@@ -9901,7 +9902,7 @@ html {
     width: 100%;
     text-align: center;
     line-height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: inline-block;
     transition: all 0.4s;
     color: var(--ztc-text-text-2);
@@ -19614,7 +19615,6 @@ html {
     line-height: 18px;
     opacity: 80%;
 }
-
 .contact-inner-section .contact4-boxarea .input-area input::placeholder {
     color: var(--ztc-text-text-3);
     font-family: var(--ztc-family-font2);
@@ -19624,6 +19624,7 @@ html {
     line-height: 18px;
     opacity: 80%;
 }
+
 
 .contact-inner-section .contact4-boxarea .input-area textarea {
     width: 100%;
@@ -26572,7 +26573,7 @@ html {
     transition: all 0.4s;
 }
 
-.memory1-section-area .memory-slider-area .owl-item.active.center .content-area {
+.memory1-section-area .memory-slider-area  .content-area {
     bottom: 20px;
     transition: all 0.6s;
 }
@@ -26657,6 +26658,127 @@ html {
 }
 
 .memory1-section-area .memory-slider-area .memory-boxarea .content-area a {
+    color: var(--ztc-text-text-2);
+    font-family: var(--ztc-family-font1);
+    font-size: var(--ztc-font-size-font-s20);
+    font-style: normal;
+    font-weight: var(--ztc-weight-bold);
+    line-height: 20px;
+    display: inline-block;
+    transition: all 0.4s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.memory1-section-area .memory-slider-areas  .img1 img {
+    transform: scale(1.1) rotate(-4deg);
+    transition: all 0.4s;
+}
+.memory1-section-area .memory-slider-areas  .content-area {
+    bottom: 20px;
+    transition: all 0.6s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea:hover .img1 img {
+    transform: scale(1.1) rotate(-4deg);
+    transition: all 0.4s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea:hover .content-area {
+    bottom: 20px;
+    transition: all 0.6s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .img1 {
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.4s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .img1 img {
+    height: 370px;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.4s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .content-area {
+    border-radius: 8px;
+    background: #FFF;
+    padding: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    bottom: -200px;
+    transition: all 0.6s;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .content-area .logo1 {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
+    height: 60px;
+    width: 60px;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .content-area .arrow a {
+    height: 48px;
+    width: 48px;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.4s;
+    background: #5cc99f;
+    color: white;
+    font-size: var(--ztc-font-size-font-s20);
+    transform: rotate(-45deg);
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .content-area p {
+    color: var(--ztc-text-text-3);
+    font-family: var(--ztc-family-font2);
+    font-size: var(--ztc-font-size-font-s16);
+    font-style: normal;
+    font-weight: var(--ztc-weight-bold);
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.memory1-section-area .memory-slider-areas .memory-boxarea .content-area a {
     color: var(--ztc-text-text-2);
     font-family: var(--ztc-family-font1);
     font-size: var(--ztc-font-size-font-s20);

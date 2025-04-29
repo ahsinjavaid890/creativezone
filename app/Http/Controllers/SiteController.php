@@ -20,11 +20,18 @@ use App\Models\video;
 use App\Models\events;
 use App\Models\upcoming_events;
 use App\Models\event_applications;
+use App\Models\invest_request;
 use App\Models\testimonial;
 use App\Models\artist;
+use App\Models\plans;
 use App\Models\contactuses;
+use App\Models\Subscription;
+use App\Models\photos;
+use App\Notifications\NewContactNotification;
 use App\Mail\GeneralEmail;
+use App\Mail\MembershipMail;
 use Stripe\Stripe;
+use Stripe\PaymentIntent;
 use Stripe\Checkout\Session as StripeSession;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -45,8 +52,19 @@ class SiteController extends Controller
 {
     public function index()
     {
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlans = $stripe->plans->all(['limit' => 10]);
+        $stripePriceIds = collect($stripePlans->data)->pluck('id')->toArray();
+        $localPlans = plans::whereIn('stripe_price_id', $stripePriceIds)->get();
+        $plan = $localPlans->map(function ($localPlan) use ($stripePlans) {
+            $stripePlan = collect($stripePlans->data)->firstWhere('id', $localPlan->stripe_price_id);
+            return [
+                'local' => $localPlan,
+                'stripe' => $stripePlan,
+            ];
+        });
         $events = events::where('status' , 'Published')->take(6)->get();
-        return view('frontend.homepage.index')->with(array('events' => $events));
+        return view('frontend.homepage.index')->with(array('events' => $events , 'plan' => $plan));
     }
     public function videos()
     {
@@ -185,10 +203,15 @@ class SiteController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('artist')->attempt($credentials)) {
-            return redirect()->to(url('userdashboard'))->with('success', 'Login successful!');
+            return redirect()->to(url('user/userdashboard'))->with('success', 'Login successful!');
         } else {
             return redirect()->back()->with('error', 'Invalid email or password.');
         }
+    }
+    public function artistlogout()
+    {
+        Auth::guard('artist')->logout();
+        return redirect()->route('login')->with('success', 'User has been logged out!');
     }
     public function aboutus()
     {
@@ -207,6 +230,7 @@ class SiteController extends Controller
             'subject' => 'required',
             'message' => 'required',
         ]);
+
         $insert = new contactuses();
         $insert->name = $request->name;
         $insert->email = $request->email;
@@ -214,6 +238,10 @@ class SiteController extends Controller
         $insert->subject = $request->subject;
         $insert->message = $request->message;
         $insert->save();
+
+        // Admin ko notify karo
+        $admin = User::first(); // ya multiple admin ko notify karna ho to loop me
+        $admin->notify(new NewContactNotification($insert));
         return view('frontend.pages.contact_shortly');
     }
     public function privacypolicy()
@@ -286,10 +314,6 @@ class SiteController extends Controller
 
         return view('frontend.user.userdashboard');
     }
-    public function investmentrequest()
-    {
-        return view('frontend.events.invesment-request');
-    }
     public function getevents(Request $request)
     {
         $date = $request->input('date');
@@ -319,5 +343,178 @@ class SiteController extends Controller
             "Dear {$add->name},\n\nThank you for applying for our event. We will get back to you soon.\n\n- CreativeZone Team"
         ));
         return redirect()->back()->with('message', 'Your application is under review');
+    }
+    public function investmentrequest()
+    {
+        return view('frontend.pages.investmentrequest');
+    }
+    public function investrequest(Request $request)
+    {
+        $add = new invest_request();
+        $add->name = $request->name;
+        $add->phone = $request->phone;
+        $add->email = $request->email;
+        $add->message = $request->message;
+        $add->status = 2;
+        $add->save();
+
+        // Email send after saving
+        $subject = 'New Investment Request Submitted';
+        $body = "New application received:\n\n"
+            . "Name: {$add->name}\n"
+            . "Phone: {$add->phone}\n"
+            . "Email: {$add->email}\n"
+            . "Message: {$add->message}";
+        Mail::to($add->email)->send(new GeneralEmail(
+            'Thank you for Send Investment Request',
+            "Dear {$add->name},\n\nThank you for Investment Request for our event. We will get back to you soon.\n\n- CreativeZone Team"
+        ));
+        return redirect()->back()->with('message', 'Your Investment Request is under review');
+    }
+    public function gallery()
+    {
+        $data = photos::where('status'  , 1)->get();
+        return view('frontend.pages.gallery' , compact('data'));
+    }
+    public function membership()
+    {
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlans = $stripe->plans->all(['limit' => 10]);
+        $stripePriceIds = collect($stripePlans->data)->pluck('id')->toArray();
+        $localPlans = plans::whereIn('stripe_price_id', $stripePriceIds)->get();
+        $data = $localPlans->map(function ($localPlan) use ($stripePlans) {
+            $stripePlan = collect($stripePlans->data)->firstWhere('id', $localPlan->stripe_price_id);
+            return [
+                'local' => $localPlan,
+                'stripe' => $stripePlan,
+            ];
+        });
+        return view('frontend.membership.index', compact('data'));
+    }
+    public function buyplan($slug)
+    {
+        $plan = plans::where('slug',$slug)->first();
+         session(['selected_plan_id' => $plan->id]);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlan = null;
+        try {
+            $stripePlan = $stripe->plans->retrieve($plan->stripe_price_id, []);
+        } catch (\Exception $e) {
+            $stripePlan = null;
+        }
+        return view('frontend.membership.buyplan', compact('plan', 'stripePlan'));
+    }
+    public function buymembership(Request $request)
+    {
+        // Validate form input
+        $data = $request->validate([
+            'name' => 'required|string',
+            'phone' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $user = Auth::guard('artist')->user(); // or Auth::user() if using default authentication
+        $plan = plans::findOrFail(session('selected_plan_id')); // Ensure selected plan exists in session
+        
+        // Check if the plan is available
+        if (!$plan) {
+            return redirect()->back()->with('error', 'No plan selected!');
+        }
+
+        // Store the user and plan information in session
+        session()->put('user_id', $user->id);
+        session()->put('plan_id', $plan->id);
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Start Stripe Checkout Session
+        $checkoutSession = StripeSession::create([
+            'payment_method_types' => ['card'],
+            'customer_email' => $data['email'],
+            'line_items' => [[
+                'price' => $plan->stripe_price_id, // Assuming `stripe_price_id` is available in Plan model
+                'quantity' => 1,
+            ]],
+            'mode' => 'subscription',
+            'success_url' => url('user/successpayment') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => url('user/cancelpayment'),
+            'metadata' => [
+                'user_id' => $user->id,
+                'plan_id' => $plan->id,
+            ],
+        ]);
+        session()->put('stripe_checkout_session_id', $checkoutSession->id);
+        // Redirect to Stripe checkout
+        return redirect()->to(url('user/checkoutpage'));
+    }
+    public function checkoutpage()
+    {
+        $planId = session('plan_id');
+        $plan = plans::where('id', $planId)->first();
+
+        if (!$plan) {
+            // Handle error if plan not found
+            return redirect()->route('plan.selection')->with('error', 'No plan selected.');
+        }
+
+        // Set Stripe API key
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // Create a PaymentIntent to confirm the payment
+        $paymentIntent = PaymentIntent::create([
+            'amount' => $plan->price * 100, // Ensure the price is in the smallest currency unit (e.g., cents)
+            'currency' => 'usd', // Update with the correct currency
+        ]);
+
+        $clientSecret = $paymentIntent->client_secret; // Get the client secret to send to the frontend
+
+        // Retrieve the Stripe plan details
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripePlan = null;
+        try {
+            $stripePlan = $stripe->plans->retrieve($plan->stripe_price_id, []);
+        } catch (\Exception $e) {
+            $stripePlan = null;
+        }
+
+        // Return the view with the plan, stripe plan, and client secret
+        return view('frontend.user.checkoutpage', compact('plan', 'stripePlan', 'clientSecret'));
+    }
+
+    public function successpayment(Request $request)
+    {
+         Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Retrieve the session data from Stripe
+        $session = \Stripe\Checkout\Session::retrieve($request->get('session_id'));
+        
+        // Fetch the user using the email from Stripe session
+        $user = Artist::where('email', $session->customer_email)->first();
+        
+        // If the user doesn't exist, handle it gracefully
+        if (!$user) {
+            return redirect()->to(url('user/userdashboard'))->with('error', 'User not found!');
+        }
+
+        $planId = $session->metadata['plan_id'];
+
+        // Fetch the plan using the plan_id stored in metadata
+        $plan = plans::find($planId);
+
+        // If the plan is not found, return an error
+        if (!$plan) {
+            return redirect()->to(url('user/userdashboard'))->with('error', 'Plan not found!');
+        }
+
+        // Save subscription record as pending
+        Subscription::create([
+            'user_id' => $user->id,
+            'stripe_subscription_id' => $session->subscription,
+            'plan_id' => $plan->id,
+            'status' => 'pending', // Subscription is pending admin verification
+        ]);
+
+        // Send confirmation email to the user
+        Mail::to($user->email)->send(new MembershipMail($user, $plan));
+
+        // Redirect with success message
+        return redirect()->to(url('user/successpayment'))->with('success', 'Payment successful! You will be activated after admin verification.');
     }
 }

@@ -145,6 +145,6 @@ class RegisterController extends Controller
             $update->image = json_encode($images);
         }
         $update->save();
-        return redirect()->to(url('userdashboard'))->with('success', 'Signup completed successfully!');
+        return redirect()->to(url('user/userdashboard'))->with('success', 'Signup completed successfully!');
     }
 }

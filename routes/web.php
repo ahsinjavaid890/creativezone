@@ -32,7 +32,7 @@ Route::POST('/artistlogin', [SiteController::class, 'artistlogin']);
 Route::POST('/userlogin', [SiteController::class, 'userlogin']);
     Route::get('/login',[SiteController::class, 'login'])->name('login');
 Route::name('user.')->prefix('user')->group(function(){
-    Route::get('dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/userdashboard', [SiteController::class, 'userdashboard']);
     Route::get('myorders',[HomeController::class, 'myorders'])->name('myorders');
     Route::get('vieworder/{id}', [HomeController::class, 'vieworder']);
     Route::get('/checkout', [SiteController::class, 'checkout'])->name('checkout');
@@ -41,6 +41,12 @@ Route::name('user.')->prefix('user')->group(function(){
     Route::POST('/profileupdate', [SiteController::class, 'profileupdate']);
     Route::POST('/addadress', [SiteController::class, 'addadress']);
     Route::POST('/changeprofilepassword', [SiteController::class, 'changeprofilepassword']);
+    Route::POST('/artistlogout', [SiteController::class, 'artistlogout']);
+    Route::get('buy-plan/{slug}', [SiteController::class, 'buyplan']);
+    Route::POST('buymembership/', [SiteController::class, 'buymembership']);
+    Route::get('/successpayment', [SiteController::class, 'successpayment']);
+    Route::get('/cancelpayment', [SiteController::class, 'cancelpayment']);
+    Route::get('/checkoutpage', [SiteController::class, 'checkoutpage']);
 });
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
@@ -67,6 +73,8 @@ Route::POST('/ratingreview', [SiteController::class, 'ratingreview'])->name('rat
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contact', [SiteController::class, 'contactus']);
 Route::POST('/contacts', [SiteController::class, 'contacts']);
+Route::get('/gallery', [SiteController::class, 'gallery']);
+Route::get('/membership', [SiteController::class, 'membership']);
 
 
 Route::get('/all/newsletters',[SiteController::class , 'viewLetters'])->name('view_news');
@@ -74,7 +82,8 @@ Route::get('/delete/letters/{id}',[SiteController::class , 'deleteLetters'])->na
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 
-Route::get('/userdashboard', [SiteController::class, 'userdashboard']);
+Route::get('/investment-request', [SiteController::class, 'investmentrequest']);
+Route::POST('/invest-request', [SiteController::class, 'investrequest']);
 
  
 
@@ -205,8 +214,20 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/upcomingevents','AdminController@upcomingevents');
         Route::post('/addupcomingevents','AdminController@addupcomingevents');
         Route::get('/eventapplications','AdminController@eventapplications');
+        Route::get('/Investmentrequests','AdminController@Investmentrequests');
         Route::get('/changeapplicationstatus/{id}','AdminController@changeapplicationstatus'); 
         Route::get('/rejecteventapplication/{id}','AdminController@rejecteventapplication');
+        Route::get('/changerequeststatus/{id}','AdminController@changerequeststatus'); 
+        Route::get('/rejectinvestrequest/{id}','AdminController@rejectinvestrequest');
+    });
+    Route::name('plans.')->prefix('plans')->group(function(){
+        Route::get('/allplans','AdminController@allplans');
+        Route::get('/createnewplan','AdminController@createnewplan');
+        Route::post('/adaddupcomingeventsdevent','AdminController@addevent');
+        Route::post('/addplan','AdminController@addplan');
+        Route::get('/editplan/{id}','AdminController@editplan');
+        Route::post('/updateplan','AdminController@updateplan');
+        Route::get('/deleteplan/{id}','AdminController@deleteplan');
     });
     Route::name('jobs.')->prefix('jobs')->group(function(){
         Route::get('/newjob','AdminController@newjob');

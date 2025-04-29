@@ -56,13 +56,13 @@
 							<h4>Social:</h4>
 							<ul>
 								<li>
-									<a href="{{ $data->facebook_url }}"><i class="fa-brands fa-facebook-f"></i></a>
+									<a href="{{ $data->facebook_url }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 								</li>
 								<li>
-									<a href="{{ $data->instagram_url }}"><i class="fa-brands fa-instagram"></i></a>
+									<a href="{{ $data->instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 								</li>
 								<li>
-									<a href="{{ $data->youtube_url }}" class="m-0"><i class="fa-brands fa-youtube"></i></a>
+									<a href="{{ $data->youtube_url }}" class="m-0"  target="_blank"><i class="fa-brands fa-youtube"></i></a>
 								</li>
 							</ul>
 						</div>

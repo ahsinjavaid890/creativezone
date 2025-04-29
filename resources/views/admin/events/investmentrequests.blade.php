@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','All Events Application')
+@section('title','All Investment Request')
 @section('content')
 
  <!--begin::Content-->
@@ -8,7 +8,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <h5 class="text-blue font-weight-bold mt-2 mb-2 mr-5">
-                    All Events Application
+                    All Investment Request
                 </h5>
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
                 <a href="{{ url('admin/dashboard') }}" class="text-blue font-weight-bold mt-2 mb-2 mr-5">
@@ -16,7 +16,7 @@
                 </a>
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
                 <a href="javascript:void(0)" class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                    All Events Application
+                    All Investment Request
                 </a>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="card-header flex-wrap">
                     <div class="card-title">
                         <h3 class="card-label">
-                            All Events Application
+                            All Investment Request
                             <div class="text-muted pt-2 font-size-sm">Manage New Events</div>
                         </h3>
                     </div>
@@ -61,12 +61,12 @@
                                 <td>{{ $r->email }}</td>
                                 <td>
                                     @if($r->status == 1)
-                                    <a href="javascript::void(0)" onclick='confirmstatus("{{ url('admin/events/changeapplicationstatus') }}/{{ $r->id }}")'>
+                                    <a href="javascript::void(0)" onclick='confirmstatus("{{ url('admin/events/changerequeststatus') }}/{{ $r->id }}")'>
                                         <span class="label label-lg label-success label-inline">Approved</span>
                                     </a>
                                     @endif
                                     @if($r->status == 2)
-                                    <a href="javascript::void(0)" onclick='confirmstatus("{{ url('admin/events/changeapplicationstatus') }}/{{ $r->id }}")'>
+                                    <a href="javascript::void(0)" onclick='confirmstatus("{{ url('admin/events/changerequeststatus') }}/{{ $r->id }}")'>
                                         <span class="label label-lg label-warning label-inline">Pending</span>
                                     </a>
                                     @endif
@@ -77,7 +77,7 @@
                                     @endif
                                 </td>
                                 <td class="text-center pr-0">
-                                    <a href="javascript:void(0);" onclick='confirmDelete("{{ url('admin/events/rejecteventapplication') }}/{{ $r->id }}")' class="btn btn-icon btn-light btn-hover-danger btn-sm">
+                                    <a href="javascript:void(0);" onclick='confirmDelete("{{ url('admin/events/rejectinvestrequest') }}/{{ $r->id }}")' class="btn btn-icon btn-light btn-hover-danger btn-sm">
                                        <span class="material-symbols-outlined">block</span>
                                     </a>
                                 </td>
@@ -101,7 +101,7 @@
     function confirmDelete(url) {
         Swal.fire({
             title: 'Are you sure?',
-            text: "Are you sure You want to Reject this Event Application",
+            text: "Are you sure You want to Reject this Investment Request",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -115,8 +115,8 @@
     }
     function confirmstatus(url) {
         Swal.fire({
-            title: 'Are you sure you Want To Change Status of This Event Application?',
-            text: "If Status is Not Approved then This Event Will Enter This Events",
+            title: 'Are you sure you Want To Change Status of ThisInvestment Request?',
+            text: "If Status is Not Approved then You Will not Enter This Events as a Investor",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

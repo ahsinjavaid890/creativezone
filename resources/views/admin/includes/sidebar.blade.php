@@ -117,6 +117,35 @@
                 </li>
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
+                        <span class="material-symbols-outlined">Event</span>
+                        <span class="menu-text">Membership Plan</span><i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                <span class="menu-link"><span class="menu-text">Buy</span></span>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/plans/allplans') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Plans</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/events/createnewevent') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Add Plans</span>
+                                </a>
+                            </li>
+                            <!-- <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/events/upcomingevents') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Upcoming Events</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="material-symbols-outlined">rss_feed</span>
                         <span class="menu-text">Blogs</span><i class="menu-arrow"></i>
                     </a>
@@ -176,6 +205,12 @@
                     <a href="{{ url('admin/events/eventapplications') }}" class="menu-link menu-toggle">
                         <span class="material-symbols-outlined">mark_chat_unread</span>
                         <span class="menu-text">Event Application</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="{{ url('admin/events/Investmentrequests') }}" class="menu-link menu-toggle">
+                        <span class="material-symbols-outlined">mark_chat_unread</span>
+                        <span class="menu-text">Investment Requests</span>
                     </a>
                 </li>
                 <li class="menu-section">
